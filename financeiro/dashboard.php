@@ -167,8 +167,8 @@ while ($ano <= $end_ano) {
 	$month = $start_month;
 while ($year <= $end_year) {
   	while ($month <= $end_month) {
-	$sql_totais = "SELECT * FROM (SELECT SUM(cache_bruto) AS bruto_recebido FROM financeiro WHERE status_recebimento = '1' AND MONTH(data_recebimento) = '$month' AND YEAR(data_recebimento) = '$year') A CROSS JOIN 
-(SELECT SUM(cache_bruto) AS bruto_a_receber FROM financeiro WHERE MONTH(data_job + INTERVAL previsao_pagamento DAY) = '$month' AND year(data_job + INTERVAL previsao_pagamento DAY) = '$year' AND status_recebimento = '0') B CROSS JOIN 
+	$sql_totais = "SELECT * FROM (SELECT SUM(cache_bruto) AS bruto_recebido FROM financeiro WHERE status_recebimento = '1' AND MONTH(data_recebimento) = '$month' AND YEAR(data_recebimento) = '$year') A CROSS JOIN
+(SELECT SUM(cache_bruto) AS bruto_a_receber FROM financeiro WHERE MONTH(data_job + INTERVAL previsao_pagamento DAY) = '$month' AND year(data_job + INTERVAL previsao_pagamento DAY) = '$year' AND status_recebimento = '0') B CROSS JOIN
 (SELECT SUM(valor_despesa) AS despesas_pagas FROM financeiro WHERE YEAR(data_despesa) = '$year' AND MONTH(data_despesa) = '$month' AND status_despesa = '1') C CROSS JOIN
 (SELECT SUM(valor_original_despesa) AS despesas_a_pagar FROM financeiro WHERE YEAR(data_venc_despesa) = '$year' AND MONTH(data_venc_despesa) = '$month' AND status_despesa = '0') D CROSS JOIN
 (SELECT SUM(cache_liquido) - SUM(abatimento_cache) AS caches_pagos FROM financeiro WHERE MONTH(data_pagamento) = '$month' AND YEAR(data_pagamento) = '$year' AND status_pagamento = '1') E CROSS JOIN
