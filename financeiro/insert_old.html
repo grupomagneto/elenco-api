@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' lang="pt-BR">
+<head>
+<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,900,900italic,400,400italic' />
+<link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css'/>
+<link rel='stylesheet' type='text/css' href='DataTables/style.css'/>
+<link rel="stylesheet" href="jquery-ui.css" />
+ 	<style type='text/css'>
+	h1 { font-family: 'Roboto', sans-serif; font-weight: 400; }
+	p { font-family: 'Roboto', sans-serif; font-weight: 300; }
+	#corpo {
+	    max-width:90%;
+	}
+	</style>
+<script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'></script>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
+<script type='text/javascript' src='jquery-ui.js'></script>
+<script type='text/javascript' src='datepicker-pt-BR.js'></script>
+	<script type='text/javascript'>
+	$(document).ready(function(){
+	    $('#resultado').DataTable( {
+	    } );
+	} );
+	</script>
+</head>
+<body>
+<center><div id="corpo">
+<h1>Inserir Despesa 3</h1>
+<form action='insert_despesas.php' method='post'>
+<table id='resultado' class='compact nowrap stripe hover row-border order-column' cellspacing='0'>
+  <thead>
+  <tr>
+    <th scope="col">Status</th>
+    <th scope="col">Data de Vencimento</th>
+    <th scope="col">Data de Pagamento</th>
+    <th scope="col">Valor Original</th>
+    <th scope="col">Valor Pago</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Descrição</th>
+    <th scope="col">Operação</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>
+    <input name="status_despesa" type="radio" value="paga" />  Paga </BR>
+    <input name="status_despesa" type="radio" value="nao_paga" />  Não Paga
+    </td>
+	<script>
+	$(function() {
+		$( '#datepicker1' ).datepicker({
+		showButtonPanel: true
+		});
+	});
+	</script>
+	    <td><input type='text' name='datepicker1' id='datepicker1' size='15' placeholder='YYYY-MM-DD' /></td>
+	<script>
+	$(function() {
+		$( '#datepicker2' ).datepicker({
+		showButtonPanel: true
+		});
+	});
+	</script>
+    <td><input type='text' name='datepicker2' id='datepicker2' size='15' placeholder='YYYY-MM-DD' /></td>
+    <td>R$: <input type='text' name='valor_original_despesa' size='10' placeholder='1000,00' /></td>
+    <td>R$: <input type='text' name='valor_despesa' size='10' placeholder='1000,00' /></td>
+    <td>
+    <select name="tipo_despesa">
+    <option selected="unselected" value="agua">Água</option>
+    <option value="aluguel">Aluguel</option>
+    <option value="condominio">Condomínio</option>
+    <option value="contabilidade">Contabilidade</option>
+    <option value="emprestimos">Empréstimos</option>    
+    <option value="folha">Folha de Pagamento</option>
+    <option value="impostos_folha">Impostos da Folha de Pagamento</option>
+    <option value="impostos_nota">Impostos de Nota Fiscal</option>
+    <option value="investimentos">Investimentos</option>
+    <option value="luz">Luz</option>
+    <option value="reparos">Manutenção e Reparos</option>
+    <option value="motoboy">Motoboy</option>
+    <option value="papelaria">Papelaria e Maquiagem</option>
+    <option value="plano_saude">Plano de Saúde</option>    
+    <option value="retiradas_anelise">Retiradas - Anelise</option>
+    <option value="retiradas_vini">Retiradas - Vini</option>
+    <option value="telefone_celular">Telefone Celular</option>
+    <option value="telefone_fixo">Telefone Fixo</option>
+    <option value="vale_refeicao">Vale-Refeição</option>
+    <option value="vale_transporte">Vale-Transporte</option>
+    <option value="vale_cultura">Vale-Cultura</option>
+    <option value="outros">Outros</option>
+    </select>
+    </td>
+    <td><input type='text' name='descricao_despesa' size='40' placeholder='Ex.: CEB janeiro 2016' /></td>
+    <td><button type='submit' name='incluir_despesa'>Incluir</button></td>
+  </tr>
+</tbody>
+</table>
+</form>
+</div></center>
+</body>
+</html>
