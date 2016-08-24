@@ -103,6 +103,20 @@ session_start();
 			if ($maximo >= $premium01 && $row['tipo_cadastro_vigente'] == 'Premium') {$select .= "	<option name='Premium_01' Value='$premium01'>Renovar PREMIUM</option>";}
 			if ($maximo >= $profissional01 && $row['tipo_cadastro_vigente'] != 'Profissional') {$select .= "	<option name='Profissional_01' Value='$profissional01'>Upgrade p/ PROFISSIONAL</option>";}
 			$select .= "	<option name='Transferência' disabled>Transferência para outro agenciado</option>";
+		} elseif ($contrato == "<font color='red'><strong>Vencido</strong></font>" && $status_cache == "<font color='orange'><strong> Pendência</strong></font>") {
+			$select = "		<option name='Ensaio' value='".$saldo_a_receber."'>Compra de Ensaio Fotográfico</option>";
+			if ($maximo >= $tresporquatro) {$select .= "	<option name='3x4' value='$tresporquatro'>Compra de fotos 3x4</option>";}
+			if ($maximo >= $premium01 && $row['tipo_cadastro_vigente'] == 'Gratuito') {$select .= "	<option name='Premium_01' Value='$premium01'>Upgrade p/ PREMIUM</option>";}
+			if ($maximo >= $premium01 && $row['tipo_cadastro_vigente'] == 'Premium') {$select .= "	<option name='Premium_01' Value='$premium01'>Renovar PREMIUM</option>";}
+			if ($maximo >= $profissional01 && $row['tipo_cadastro_vigente'] != 'Profissional') {$select .= "	<option name='Profissional_01' Value='$profissional01'>Upgrade p/ PROFISSIONAL</option>";}
+			$select .= "	<option name='Transferência' disabled>Transferência para outro agenciado</option>";
+		} elseif ($contrato == "<font color='red'><strong>Vencido</strong></font>" && $status_cache == "<font color='green'><strong> Liberado</strong></font>") {
+			$select = "		<option name='Ensaio' value='".$saldo_a_receber."'>Compra de Ensaio Fotográfico</option>";
+			if ($maximo >= $tresporquatro) {$select .= "	<option name='3x4' value='$tresporquatro'>Compra de fotos 3x4</option>";}
+			if ($maximo >= $premium01 && $row['tipo_cadastro_vigente'] == 'Gratuito') {$select .= "	<option name='Premium_01' Value='$premium01'>Upgrade p/ PREMIUM</option>";}
+			if ($maximo >= $premium01 && $row['tipo_cadastro_vigente'] == 'Premium') {$select .= "	<option name='Premium_01' Value='$premium01'>Renovar PREMIUM</option>";}
+			if ($maximo >= $profissional01 && $row['tipo_cadastro_vigente'] != 'Profissional') {$select .= "	<option name='Profissional_01' Value='$profissional01'>Upgrade p/ PROFISSIONAL</option>";}
+			$select .= "	<option name='Transferência' disabled>Transferência para outro agenciado</option>";
 		} else {
 			$select = "		<option name='Ensaio' value='".$saldo_a_receber."'>Compra de Ensaio Fotográfico</option>";
 			if ($maximo >= $tresporquatro) {$select .= "	<option name='3x4' value='$tresporquatro'>Compra de fotos 3x4</option>";}
@@ -219,7 +233,7 @@ echo "<tr>
 <tr>
     <td style='width:90px' align='left'><label><input type='checkbox' name='utilizar' value='true' id='utilizar' onclick="document.getElementById('saldo_utilizado').removeAttribute('disabled');document.getElementById('operacao').removeAttribute('disabled');" /> Utilizar</label></th>
 <?php echo "    <td align='left'>R$: <input type='number' name='saldo_utilizado' id='saldo_utilizado' min='1' max='$saldo_a_receber' disabled required /></td>"; ?>
-    <td></td> 
+    <td></td>
 </tr>
 <tr>
     <th></th>
