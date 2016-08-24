@@ -56,7 +56,7 @@ while ($candidate_number > 2) {
 		<input type='hidden' name='view_level' value='$level' />
 		<input type='hidden' name='total_pages' value='$total_pages' />
 		<input type='hidden' name='vote_time_start' value='$vote_time_start' />
-		<input type='hidden' name='page' value='$newpage' />";		
+		<input type='hidden' name='page' value='$newpage' />";
 		?>
 		<a href="javascript: document.getElementById('form01').submit();">
 		<?php echo "
@@ -116,7 +116,7 @@ while ($candidate_number > 2) {
 					<input type='hidden' name='view_level' value='$level' />
 					<input type='hidden' name='total_pages' value='$total_pages' />
 					<input type='hidden' name='vote_time_start' value='$vote_time_start' />
-					<input type='hidden' name='page' value='$newpage' />";		
+					<input type='hidden' name='page' value='$newpage' />";
 					?>
 					<a href="javascript: document.getElementById('form01').submit();">
 					<?php echo "
@@ -142,9 +142,10 @@ while ($candidate_number > 2) {
 			else {
 				$total_pages = ceil($total_records/$per_page);
 				$newpage = $page + 1;
-				while ($total_records > 1) {
+				if ($total_records > 1) {
 					if ($page <= $total_pages) {
 						$write_level = $level - 1;
+						$total_records = $total_records - 1;
 						echo "<table align='center' border='1'><tr align='center'>
 						<td><form id='form01' action='action_select.php' method='post'>
 						<input type='hidden' name='candidate_elenco_ID' value='$candidate_elenco_ID_1' />
@@ -155,11 +156,11 @@ while ($candidate_number > 2) {
 						<input type='hidden' name='view_level' value='$level' />
 						<input type='hidden' name='total_pages' value='$total_pages' />
 						<input type='hidden' name='vote_time_start' value='$vote_time_start' />
-						<input type='hidden' name='page' value='$newpage' />";		
+						<input type='hidden' name='page' value='$newpage' />";
 						?>
 						<a href="javascript: document.getElementById('form01').submit();">
 						<?php echo "
-						<img src='http://www.magnetoelenco.com.br/fotos/$foto01'>$candidate_elenco_ID_1
+						<img src='http://www.magnetoelenco.com.br/fotos/$foto01'>Total Records: $total_records
 						</a></form></td>
 						<td><form id='form02' action='action_select.php' method='post'>
 						<input type='hidden' name='candidate_elenco_ID' value='$candidate_elenco_ID_2' />
@@ -174,10 +175,9 @@ while ($candidate_number > 2) {
 						?>
 						<a href="javascript: document.getElementById('form02').submit();">
 						<?php echo "
-						<img src='http://www.magnetoelenco.com.br/fotos/$foto02'>$candidate_elenco_ID_2
+						<img src='http://www.magnetoelenco.com.br/fotos/$foto02'>Total Records: $total_records
 						</a></form></td></tr></table>";
 					}
-					$total_records--;
 				}
 				if ($page <= $total_pages && $total_records == 1) {
 					$write_level = $level - 1;
@@ -191,7 +191,7 @@ while ($candidate_number > 2) {
 					<input type='hidden' name='view_level' value='$level' />
 					<input type='hidden' name='total_pages' value='$total_pages' />
 					<input type='hidden' name='vote_time_start' value='$vote_time_start' />
-					<input type='hidden' name='page' value='$newpage' />";		
+					<input type='hidden' name='page' value='$newpage' />";
 					?>
 					<a href="javascript: document.getElementById('form01').submit();">
 					<?php echo "
@@ -207,7 +207,7 @@ while ($candidate_number > 2) {
 					$candidate_elenco_ID_2 = $row02['candidate_elenco_ID'];
 
 					echo "
-					<td><form id='form02' action='action_select.php' method='post'>
+					<td><form id='form03' action='action_select.php' method='post'>
 					<input type='hidden' name='candidate_elenco_ID' value='$candidate_elenco_ID_2' />
 					<input type='hidden' name='game_ID' value='$game_ID' />
 					<input type='hidden' name='loser_candidate_ID' value='$candidate_elenco_ID_1' />
@@ -218,12 +218,13 @@ while ($candidate_number > 2) {
 					<input type='hidden' name='vote_time_start' value='$vote_time_start' />
 					<input type='hidden' name='page' value='$newpage' />";
 					?>
-					<a href="javascript: document.getElementById('form02').submit();">
+					<a href="javascript: document.getElementById('form03').submit();">
 					<?php echo "
 					<img src='http://www.magnetoelenco.com.br/fotos/$foto02'>$candidate_elenco_ID_2
 					</a></form></td></tr></table>";
 				}
 			}
+		// Level > 1
 		}
 	}
 	if ($level == 1){
