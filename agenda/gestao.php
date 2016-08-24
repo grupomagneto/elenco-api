@@ -105,10 +105,10 @@ session_start();
 	while ($row = mysqli_fetch_array($result)) {
 		$id = $row['id_elenco'];
 		$dt_insercao = $row['dt_insercao'];
-		$dt_insercao = date( "d/m/Y H:i:s", strtotime($dt_insercao) -3 * 3600 );
+		$dt_insercao = date( "d/m/Y H:i:s", strtotime($dt_insercao) +4 * 3600 );
 		$nome = $row['nome']." ".$row['sobrenome'];
 		$celular = $row['celular'];
-		$celular = mask($celular, '(##) ####-####');
+		$celular = mask($celular, '(##) #####-####');
 		$tipo_cadastro = $row['tipo_cadastro'];
 			if ($row['tipo_cadastro_efetivado'] != NULL) {
 				$tipo_cadastro = $row['tipo_cadastro_efetivado'];
