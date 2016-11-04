@@ -1,4 +1,4 @@
-<?php header('Content-type: text/html; charset=ISO-8859-15');
+<?php
 include('conecta.php');
 	$id = $_POST['id_elenco'];
 	$tipo_cadastro_vigente = $_POST['tipo_cadastro_vigente'];

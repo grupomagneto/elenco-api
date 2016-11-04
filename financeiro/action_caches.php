@@ -1,6 +1,5 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-session_start();
 	if (!empty($_POST['id'])) {
 	    $id = $_POST['id'];
 		$nova_data_pagamento = $_POST['nova_data_pagamento'.$id];

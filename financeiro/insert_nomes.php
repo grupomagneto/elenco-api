@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=UTF-8");
+<?php
 session_start();
 	$data_job = $_SESSION['data_job'];
 	$produzido_por = $_SESSION['produzido_por'];
@@ -59,6 +59,7 @@ echo"
 	<table id='resultado' class='compact nowrap stripe hover row-border order-column' cellspacing='0' width='100%'>
 		<tr>
 			<th scope='col'>Nome</th>
+			<th scope='col'>Sobrenome</th>
 			<th scope='col'>Cachê Bruto</th>
 			<th scope='col'>Cachê Líquido</th>
 			<th scope='col'>Tipo do Job</th>
@@ -68,7 +69,8 @@ echo"
 		while ($part <= $n_participantes) {
 echo "
 	<tr>
-		<td><div><input type='text' name='typeahead".$part."' class='typeahead tt-query' autocomplete='off' spellcheck='false' placeholder='Nome Artístico'></div></td>
+		<td><div><input type='text' name='nome".$part."' autocomplete='off' spellcheck='false' placeholder='Nome'></div></td>
+		<td><div><input type='text' name='sobrenome".$part."' autocomplete='off' spellcheck='false' placeholder='Sobrenome'></div></td>
 		<td>R$: <input type='text' name='cache_bruto".$part."' size='10' placeholder='1000.00' required /></td>
 		<td>R$: <input type='text' name='cache_liquido".$part."' size='10' placeholder='1000.00' required /></td>
 		<td>

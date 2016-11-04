@@ -1,12 +1,10 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-	session_start();
-	date_default_timezone_set('America/Sao_Paulo');
 ?>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang="pt-BR">
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <title>Caches - Magneto Elenco</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,900,900italic,400,400italic' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css'/>
@@ -60,7 +58,7 @@ $(document).ready(function(){
 </head>
 <body>
 <center><div>
-	<h1>Cachês</h1>
+	<h1>CachÃªs</h1>
 <?php
 	$hoje = date('Y-m-d', time());
 	$result = mysqli_query($link, "SELECT * FROM (SELECT id id_cache, data_job, nome, sobrenome, id_elenco_financeiro id, campanha, cliente_job, produzido_por, status_recebimento, liberado, previsao_pagamento, status_pagamento, data_pagamento, data_recebimento, n_ligacoes, cache_liquido, abatimento_cache FROM financeiro WHERE tipo_entrada='cache' AND status_pagamento = 0 AND YEAR(data_job) > '2014' AND nome IS NOT NULL ORDER BY data_job DESC) T1 INNER JOIN (SELECT id_elenco id, email, tipo_cadastro_vigente, data_contrato_vigente, tl_celular FROM tb_elenco comum) T2 USING (id) ORDER BY data_job DESC");
@@ -82,15 +80,15 @@ $(document).ready(function(){
 		<thead>
  			<tr>
      			<th>Status</th>
-				<th>Previsão Pgto.</th>
+				<th>PrevisÃ£o Pgto.</th>
      			<th>Agenciado</th>
 				<th>Cadastro</th>
 				<th>Contrato</th>
      			<th>Produtora - Cliente - Job</th>
 				<th>Data do Job</th>
-				<!-- <th>Ligações</th> -->
-				<th>Cachê Líquido</th>
-				<th>Operação</th>
+				<!-- <th>LigaÃ§Ãµes</th> -->
+				<th>CachÃª LÃ­quido</th>
+				<th>OperaÃ§Ã£o</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -147,24 +145,24 @@ echo "     			<td>";
 					if ($liberado == 1 && $hoje <= date('Y-m-d', strtotime($row['data_contrato_vigente']."+2 years")) && $row['data_contrato_vigente'] != NULL || $liberado == 1 && $previsao <= $hoje && $row['status_recebimento'] == 1 && $hoje <= date('Y-m-d', strtotime($row['data_contrato_vigente']."+2 years")) && $row['data_contrato_vigente'] != NULL) {
 					    echo "<div id='recebido_nao_pago'><strong> Liberado</strong></div>";
 					} elseif ($previsao <= $hoje && $row['status_recebimento'] == 1 && $hoje > date('Y-m-d', strtotime($row['data_contrato_vigente']."+2 years")) || $row['data_contrato_vigente'] == NULL) {
-					    echo "<div id='pendencia'><strong>  Pendência</strong></div>";
+					    echo "<div id='pendencia'><strong>  PendÃªncia</strong></div>";
 					// // } elseif ($row['status_recebimento'] == 0 && $row['status_pagamento'] == 0 && $hoje >= $sessenta && $hoje < $noventa) {
 					// } elseif ($row['liberado'] == 0 && $row['status_pagamento'] == 0 && $hoje >= $sessenta && $hoje < $noventa) {
-					//     echo "<div id='sessenta'><strong>(3) Indisponível (60+)</strong></div>";
+					//     echo "<div id='sessenta'><strong>(3) IndisponÃ­vel (60+)</strong></div>";
 					// // } elseif ($row['status_recebimento'] == 0 && $row['status_pagamento'] == 0 && $hoje >= $noventa && $hoje < $cento_vinte) {
 					// } elseif ($row['liberado'] == 0 && $row['status_pagamento'] == 0 && $hoje >= $noventa && $hoje < $cento_vinte) {
-					//     echo "<div id='noventa'><strong>(2) Indisponível (90+)</strong></div>";
+					//     echo "<div id='noventa'><strong>(2) IndisponÃ­vel (90+)</strong></div>";
 					// // } elseif ($row['status_recebimento'] == 0 && $row['status_pagamento'] == 0 && $hoje >= $cento_vinte) {
 					// } elseif ($row['liberado'] == 0 && $row['status_pagamento'] == 0 && $hoje >= $cento_vinte && $hoje < $cento_oitenta) {
-					//     echo "<div id='cento_vinte'><strong>(1) Indisponível (120+)</strong></div>";
+					//     echo "<div id='cento_vinte'><strong>(1) IndisponÃ­vel (120+)</strong></div>";
 					// } elseif ($row['liberado'] == 0 && $row['status_pagamento'] == 0 && $hoje >= $cento_oitenta) {
-					//     echo "<div id='cento_vinte'><strong>(8) Indisponível (180+)</strong></div>";
+					//     echo "<div id='cento_vinte'><strong>(8) IndisponÃ­vel (180+)</strong></div>";
 					// // } elseif ($row['status_recebimento'] == 0 && $row['status_pagamento'] == 0 && $hoje <= $sessenta) {
 					// } elseif ($row['liberado'] == 0 && $row['status_pagamento'] == 0 && $hoje <= $sessenta) {
-					//     echo "(4) Indisponível";
+					//     echo "(4) IndisponÃ­vel";
 					// } elseif ($row['liberado'] == 0 && $row['status_pagamento'] == 0) {
 					} else {
-					    echo "<div id='indisponivel'><strong>Indisponível</strong></div>";
+					    echo "<div id='indisponivel'><strong>IndisponÃ­vel</strong></div>";
 					// } elseif ($row['status_recebimento'] == 0 && $row['status_pagamento'] == 1) {
 					//     echo "(3) Adiantamento";
 					// } elseif ($row['status_recebimento'] == 1 && $row['status_pagamento'] == 1) {
@@ -179,7 +177,7 @@ echo "     			<td>".$row['produzido_por']." - ".$row['cliente_job']." - ".$row['
 echo "     			<td>".$data_job_format."</td>";
 // echo "     			<td>";
 // 					if ($row['data_recebimento'] == NULL || $row['data_recebimento'] == '') {
-// 					    echo "Não Recebido</td>";
+// 					    echo "NÃ£o Recebido</td>";
 // 					} else {
 // 						echo $row['data_recebimento']."</td>";
 // 					}

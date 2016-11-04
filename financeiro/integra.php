@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 	$db = mysql_connect("p3plcpnl0612.prod.phx3.secureserver.net","vinigoulart1","ThM]HETPv@"); 
 	if (!$db) {
 	die("Database connection failed miserably: " . mysql_error());
@@ -32,7 +32,7 @@
 	// }
 	print_r($result);
 	// $sql3 = mysql_query("UPDATE financeiro SET id_elenco = $id2 WHERE id = $match");
-		// Pegou apenas os últimos nomes
+		// Pegou apenas os Ãºltimos nomes
 
 		
 
@@ -68,7 +68,7 @@
 	// 	echo "rolou";
 	//     echo "Financeiro: ".$nome1.$id;
 	// 	echo "tb_elenco: ".$nome_artistico.$id2;
-	// }	echo "não rolou";
+	// }	echo "nÃ£o rolou";
 	//     echo "Financeiro: ".$nome1.$id;
 	// 	echo "tb_elenco: ".$nome_artistico.$id2;
 	mysql_close($db);

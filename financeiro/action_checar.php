@@ -1,6 +1,5 @@
-<?php header('Content-type: text/html; charset=ISO-8859-15');
+<?php
 include('conecta.php');
-session_start();
 	$id = $_GET['checar'];
 	$sql = "SELECT * FROM (SELECT id id_cache, data_job, nome primeiro_nome, sobrenome, id_elenco_financeiro id, campanha, cliente_job, produzido_por, status_recebimento, liberado, previsao_pagamento, status_pagamento, data_pagamento, data_recebimento, n_ligacoes, cache_liquido, abatimento_cache FROM financeiro WHERE id = '$id') T1 INNER JOIN (SELECT id_elenco id, nome, email, tipo_cadastro_vigente, data_contrato_vigente, tl_celular FROM tb_elenco comum) T2 USING (id) ORDER BY data_job DESC";
 	$result = mysqli_query($link, $sql);
@@ -11,8 +10,8 @@ session_start();
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
-<title>Atualizar Informações</title>
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
+<title>Atualizar InformaÃ§Ãµes</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css' />
 <style type='text/css'>
@@ -67,7 +66,7 @@ session_start();
 	<td align='left'><input type='date' name='data_contrato_vigente' required></td>
 </tr>
 <tr>
-    <th>1º Contrato:&nbsp;</th>
+    <th>1Âº Contrato:&nbsp;</th>
 	<td align='left'><input type='date' name='data_1o_contrato' required></td>
 </tr>
 </table><br /><br />

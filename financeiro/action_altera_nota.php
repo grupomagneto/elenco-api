@@ -1,12 +1,11 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-session_start();
 ?>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
-<title>Emissão de Nota Fiscal</title>
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
+<title>EmissÃ£o de Nota Fiscal</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.css'/>
 <link rel='stylesheet' type='text/css' href='DataTables/style.css'/>
@@ -61,7 +60,7 @@ session_start();
 		} 	elseif ($n_nota_fiscal != NULL && $data_nota != NULL && $novo_n_nota_fiscal == NULL && $novo_n_nota_fiscal == NULL) {
 				$sql = "UPDATE financeiro SET emitiu_nota = REPLACE(emitiu_nota,'$emitiu_nota','0'), n_nota_fiscal = NULL, data_nota = NULL WHERE tipo_entrada='cache' AND cliente_job='$cliente_job' AND produzido_por='$produzido_por' AND campanha='$campanha' AND emitiu_nota='$emitiu_nota'";
 			mysqli_query($link, $sql);
-			echo "Nota Fiscal excluída com sucesso.";
+			echo "Nota Fiscal excluÃ­da com sucesso.";
 			echo "<button type='button' id='fechar'>Fechar esta janela</button>
 					<script type='text/javascript'>
 						document.getElementById('fechar').addEventListener('click', function() {

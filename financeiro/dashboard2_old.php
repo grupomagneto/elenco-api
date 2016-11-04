@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
 	$start_month = 1;
 	$end_month = 12;
@@ -36,7 +36,7 @@ while ($year <= $end_year) {
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <title>Dashboard - Magneto Elenco</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css'/>
@@ -54,7 +54,7 @@ while ($year <= $end_year) {
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['', 'Receitas Líquidas', 'Despesas Pagas', 'Resultado'],
+      ['', 'Receitas LÃ­quidas', 'Despesas Pagas', 'Resultado'],
       ['Jan', <?php echo $receitas12016;?>, <?php echo $despesas12016;?>, <?php echo $resultado12016;?>],
       ['Fev', <?php echo $receitas22016;?>, <?php echo $despesas22016;?>, <?php echo $resultado22016;?>],
       ['Mar', <?php echo $receitas32016;?>, <?php echo $despesas32016;?>, <?php echo $resultado32016;?>],
@@ -72,7 +72,7 @@ while ($year <= $end_year) {
     var options = {
       chart: {
         title: 'Performance da Empresa',
-        subtitle: 'Receitas Líquidas, Despesas, e Resultado 2016',
+        subtitle: 'Receitas LÃ­quidas, Despesas, e Resultado 2016',
       }
     };
 

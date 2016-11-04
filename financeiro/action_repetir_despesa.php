@@ -1,6 +1,5 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-session_start();
 	$status_despesa = $_SESSION['status_despesa'];
 	$data_venc_despesa = $_SESSION['data_venc_despesa'];
 	$data_despesa = $_SESSION['data_despesa'];

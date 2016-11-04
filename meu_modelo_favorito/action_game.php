@@ -1,4 +1,4 @@
-<?php header('Content-type: text/html; charset=ISO-8859-15');
+<?php header('Content-type: text/html; charset=UTF-8');
 include('conecta.php');
 	$casting = $_POST['casting'];
 	$casting = str_replace("http://www.magnetoelenco.com.br/v2/meu_casting.php?id_casting=", "", "$casting");

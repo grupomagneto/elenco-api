@@ -1,11 +1,10 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-	session_start();
 ?>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang="pt-BR">
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <title>Jobs - Magneto Elenco</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,900,900italic,400,400italic' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.css'/>
@@ -30,21 +29,21 @@ $(document).ready(function(){
     $('#resultado').DataTable( {
             'language': {
 			    'sEmptyTable': 'Nenhum registro encontrado',
-			    'sInfo': 'Mostrando de _START_ até _END_ de _TOTAL_ registros',
-			    'sInfoEmpty': 'Mostrando 0 até 0 de 0 registros',
+			    'sInfo': 'Mostrando de _START_ atÃ© _END_ de _TOTAL_ registros',
+			    'sInfoEmpty': 'Mostrando 0 atÃ© 0 de 0 registros',
 			    'sInfoFiltered': '(Filtrados de _MAX_ registros)',
 			    'sInfoPostFix': '',
 			    'sInfoThousands': '.',
-			    'sLengthMenu': 'Mostrar _MENU_ resultados por página',
+			    'sLengthMenu': 'Mostrar _MENU_ resultados por pÃ¡gina',
 			    'sLoadingRecords': 'Carregando...',
 			    'sProcessing': 'Processando...',
 			    'sZeroRecords': 'Nenhum registro encontrado',
 			    'sSearch': 'Pesquisar',
 			    'oPaginate': {
-			        'sNext': 'Próximo',
+			        'sNext': 'PrÃ³ximo',
 			        'sPrevious': 'Anterior',
 			        'sFirst': 'Primeiro',
-			        'sLast': 'Último'
+			        'sLast': 'Ãltimo'
 			    },
 			    'oAria': {
 			        'sSortAscending': ': Ordenar colunas de forma ascendente',
@@ -76,7 +75,7 @@ $(document).ready(function(){
 				<th>Agenciados</th>
 				<th>Valor</th>
 	  			<th>Data Recebimento</th>
-				<th>Operação</th>
+				<th>OperaÃ§Ã£o</th>
 			</tr>
 		</thead>
 		<tbody>

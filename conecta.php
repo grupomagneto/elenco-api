@@ -1,11 +1,4 @@
-<?php header('Content-Type: text/html; charset=utf-8');
-date_default_timezone_set('America/Sao_Paulo');
-if(!session_id()) {
-    session_start();
-}
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+<?php
 
 // DB Localhost
 // $user = 'root';
@@ -23,7 +16,6 @@ error_reporting(E_ALL);
 //    $db,
 //    $port
 // );
-// mysqli_set_charset($link,"utf8");
 
 // DB Online
 $user = 'vinigoulart1';
@@ -39,7 +31,6 @@ $success = mysqli_real_connect(
    $password,
    $db
 );
-mysqli_set_charset($link,"utf8");
 
 // DB Online 2
 $user2 = 'vinigoulart12';
@@ -55,5 +46,4 @@ $success2 = mysqli_real_connect(
    $password2,
    $db2
 );
-mysqli_set_charset($link2,"utf8");
 ?>
