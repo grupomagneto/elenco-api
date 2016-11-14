@@ -1,8 +1,12 @@
 <?php
 include('conecta.php');
 	$id_cache_01 = $_GET['id'];
-	$utilizar = $_GET['utilizar'];
-	$sacar = $_GET['sacar'];
+	if (!empty($_GET['utilizar'])) {
+		$utilizar = $_GET['utilizar'];
+	}
+	if (!empty($_GET['sacar'])) {
+		$sacar = $_GET['sacar'];
+	}
 if (!$sacar && !$utilizar) {
 	echo "Escolha uma das opção: Utilizar ou Sacar.";
 } else {
@@ -16,9 +20,18 @@ if (!$sacar && !$utilizar) {
 		$valor_cheque_existente = $row['valor_cheque'];
 		$nome = $row['nome'];
 		$sobrenome = $row['sobrenome'];
+		if (!empty($_GET['saldo_utilizado'])) {
 		$saldo_utilizado = $_GET['saldo_utilizado'];
+		}
+		elseif (empty($_GET['saldo_utilizado'])) {
+		$saldo_utilizado = 0;
+		}
+		if (!empty($_GET['saldo_sacado'])) {
 		$saldo_sacado = $_GET['saldo_sacado'];
-
+		}
+		elseif (empty($_GET['saldo_sacado'])) {
+		$saldo_sacado = 0;
+		}
 		// Eu acho que posso definir isso separado, mesmo não usando... para fazer apenas uma vez
 		$sql_n_caches = "SELECT COUNT(id) AS n_caches FROM financeiro WHERE tipo_entrada = 'Cache' AND status_pagamento = 0 AND id_elenco_financeiro = '$id_elenco' AND id <> '$id_cache_01' ORDER BY cache_liquido DESC";
 			$result3 = mysqli_query($link, $sql_n_caches);
@@ -69,25 +82,25 @@ if (!$sacar && !$utilizar) {
 						$tipo_cadastro_vigente = "Premium";
 						$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 						mysqli_query($link, $sql_tb_elenco);
-						// mysqli_query($link2, $sql_tb_elenco);
+						mysqli_query($link2, $sql_tb_elenco);
 					} elseif ($operacao == '299') {
 						$produto = "Cadastro Premium";
 						$tipo_cadastro_vigente = "Premium";
 						$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 						mysqli_query($link, $sql_tb_elenco);
-						// mysqli_query($link2, $sql_tb_elenco);
+						mysqli_query($link2, $sql_tb_elenco);
 					} elseif ($operacao == '899') {
 						$produto = "Cadastro Profissional";
 						$tipo_cadastro_vigente = "Profissional";
 						$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 						mysqli_query($link, $sql_tb_elenco);
-						// mysqli_query($link2, $sql_tb_elenco);
+						mysqli_query($link2, $sql_tb_elenco);
 					} elseif ($operacao == '999') {
 						$produto = "Cadastro Profissional";
 						$tipo_cadastro_vigente = "Profissional";
 						$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 						mysqli_query($link, $sql_tb_elenco);
-						// mysqli_query($link2, $sql_tb_elenco);
+						mysqli_query($link2, $sql_tb_elenco);
 					}
 					// Usar cache original e quitar
 					$sql_utilizar = "UPDATE financeiro SET abatimento_cache = '$cache_liquido', data_abatimento = '$data', produto_abatimento = '$produto', status_pagamento = '1' WHERE id = '$id_cache_01'";
@@ -132,7 +145,7 @@ if (!$sacar && !$utilizar) {
 		}
 	// Utiliza apenas o cachê selecionado
 	} elseif ($cache_liquido >= $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_cheque_existente) {
-		if ($utilizar == 'true'){
+		if (isset($utilizar) && $utilizar == 'true'){
 			$operacao = $_GET['operacao'];
 			if (!$operacao) {
 				echo "Por favor, selecione uma forma de utilização do crédito.";
@@ -150,7 +163,7 @@ if (!$sacar && !$utilizar) {
 				$tipo_cadastro_vigente = "Premium";
 				$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 				mysqli_query($link, $sql_tb_elenco);
-				// mysqli_query($link2, $sql_tb_elenco);
+				mysqli_query($link2, $sql_tb_elenco);
 				$sql_venda = "INSERT INTO financeiro (tipo_entrada, nome, sobrenome, id_elenco_financeiro, produto, status_venda, qtd, valor_venda, data_venda, forma_pagamento, n_parcelas) VALUES ('Venda', '$nome','$sobrenome','$id_elenco','$produto','Pago','1','$saldo_utilizado','$data','Abatimento de Cachê','1')";
 				mysqli_query($link, $sql_venda);
 			} elseif ($operacao == '299') {
@@ -160,7 +173,7 @@ if (!$sacar && !$utilizar) {
 				$tipo_cadastro_vigente = "Premium";
 				$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 				mysqli_query($link, $sql_tb_elenco);
-				// mysqli_query($link2, $sql_tb_elenco);
+				mysqli_query($link2, $sql_tb_elenco);
 				$sql_venda = "INSERT INTO financeiro (tipo_entrada, nome, sobrenome, id_elenco_financeiro, produto, status_venda, qtd, valor_venda, data_venda, forma_pagamento, n_parcelas) VALUES ('Venda', '$nome','$sobrenome','$id_elenco','$produto','Pago','1','$saldo_utilizado','$data','Abatimento de Cachê','1')";
 				mysqli_query($link, $sql_venda);
 			} elseif ($operacao == '899') {
@@ -170,7 +183,7 @@ if (!$sacar && !$utilizar) {
 				$tipo_cadastro_vigente = "Profissional";
 				$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 				mysqli_query($link, $sql_tb_elenco);
-				// mysqli_query($link2, $sql_tb_elenco);
+				mysqli_query($link2, $sql_tb_elenco);
 				$sql_venda = "INSERT INTO financeiro (tipo_entrada, nome, sobrenome, id_elenco_financeiro, produto, status_venda, qtd, valor_venda, data_venda, forma_pagamento, n_parcelas) VALUES ('Venda', '$nome','$sobrenome','$id_elenco','$produto','Pago','1','$saldo_utilizado','$data','Abatimento de Cachê','1')";
 				mysqli_query($link, $sql_venda);
 			} elseif ($operacao == '999') {
@@ -180,7 +193,7 @@ if (!$sacar && !$utilizar) {
 				$tipo_cadastro_vigente = "Profissional";
 				$sql_tb_elenco = "UPDATE tb_elenco SET tipo_cadastro_vigente = '$tipo_cadastro_vigente', data_contrato_vigente = '$data' WHERE id_elenco = '$id_elenco'";
 				mysqli_query($link, $sql_tb_elenco);
-				// mysqli_query($link2, $sql_tb_elenco);
+				mysqli_query($link2, $sql_tb_elenco);
 				$sql_venda = "INSERT INTO financeiro (tipo_entrada, nome, sobrenome, id_elenco_financeiro, produto, status_venda, qtd, valor_venda, data_venda, forma_pagamento, n_parcelas) VALUES ('Venda', '$nome','$sobrenome','$id_elenco','$produto','Pago','1','$saldo_utilizado','$data','Abatimento de Cachê','1')";
 				mysqli_query($link, $sql_venda);
 			}
@@ -202,6 +215,6 @@ if (!$sacar && !$utilizar) {
 	} 
 }
 mysqli_close($link);
-// mysqli_close($link2);
-// header("Location: action_print.php?id=$id_cache_01");
+mysqli_close($link2);
+header("Location: action_print.php?id=$id_cache_01");
 ?>

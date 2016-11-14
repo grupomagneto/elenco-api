@@ -59,8 +59,8 @@ function extenso($valor = 0, $maiusculas = false) {
 		return($rt ? $rt : "zero");
 	} else {
 
-	// if ($rt) $rt=ereg_replace(" E "," e ",ucwords($rt)); 
-	if ($rt) $rt=ereg_replace(" E "," e ",strtolower($rt));
+	// if ($rt) $rt=preg_replace("/ E /"," e ",ucwords($rt)); 
+	if ($rt) $rt=preg_replace("/ E /"," e ",strtolower($rt));
 	return (($rt) ? ($rt) : "Zero");
 	}
 
@@ -97,15 +97,15 @@ function extenso($valor = 0, $maiusculas = false) {
 			$abatimento_cache = number_format($abatimento_cache, 2, ",", ".");
 
 			$sacado_extenso = extenso($sacado);
-			$sacado_extenso = ereg_replace(" E "," e ",strtolower($sacado_extenso));
+			$sacado_extenso = preg_replace("/ E /"," e ",strtolower($sacado_extenso));
 			$sacado = number_format($sacado, 2, ",", ".");
 
 			$cache_liquido_extenso = extenso($cache_liquido);
-			$cache_liquido_extenso = ereg_replace(" E "," e ",strtolower($cache_liquido_extenso));
+			$cache_liquido_extenso = preg_replace("/ E /"," e ",strtolower($cache_liquido_extenso));
 			$cache_liquido = number_format($cache_liquido, 2, ",", ".");
 
 			$saldo_extenso = extenso($saldo);
-			$saldo_extenso = ereg_replace(" E "," e ",strtolower($saldo_extenso));
+			$saldo_extenso = preg_replace("/ E /"," e ",strtolower($saldo_extenso));
 			$saldo = number_format($saldo, 2, ",", ".");
 
 		if ($sacado == 0) {
