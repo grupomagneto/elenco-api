@@ -1,4 +1,4 @@
-<?php header('Content-type: text/html; charset=ISO-8859-15');
+<?php
 include('conecta.php');
 include('functions.php');
 	$casting = $_GET['casting'];
@@ -12,7 +12,7 @@ include('functions.php');
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang="pt-BR">
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <title>Caches - Magneto Elenco</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css'/>
@@ -39,7 +39,7 @@ $(document).ready(function(){
  			<tr>
      			<th>ID</th>
 				<th>Nome</th>
-				<th>Responsável</th>
+				<th>ResponsÃ¡vel</th>
 				<th>Cadastro</th>
 				<th>Bairro</th>
      			<th>Celular</th>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.css'/>
 <link rel='stylesheet' type='text/css' href='DataTables/style.css'/>
@@ -38,7 +38,7 @@
 		<th scope='col'>Valor Total do Job</th>
 		<th scope='col'>Com Nota?</th>
 		<th scope='col'>Data da Nota</th>
-		<th scope='col'>Nº Nota</th>
+		<th scope='col'>NÂº Nota</th>
 	</tr>
 	<tr>
 		<td><input type='text' name='cliente_job' size='20' placeholder='Ex.: Banco do Brasil' required /></td>
@@ -48,7 +48,7 @@
 		<td>R$: <input type='text' name='valor_total_job' size='10' placeholder='1000.00' required /></td>
 		<td>
 			<input name='emitiu_nota' id='com_nota' type='radio' value=1 />  Sim </BR>
-			<input name='emitiu_nota' id='sem_nota' type='radio' value=0 checked='checked'/>  Não
+			<input name='emitiu_nota' id='sem_nota' type='radio' value=0 checked='checked'/>  NÃ£o
 		</td>
 		<td><input type='date' id='data_nota' name='data_nota' size='13' disabled='disabled' /></td>
 	    <td><input type='number' id='n_nota_fiscal' name='n_nota_fiscal' disabled='disabled' /></td>
@@ -64,14 +64,14 @@
 		</script>
 	</tr>
 	<tr>
-		<th scope='col'>Nº de Participantes</th>
-		<th scope='col'>Mídia</th>
-		<th scope='col'>Praça</th>
-		<th scope='col'>Período</th>
-		<th scope='col'>Previsão</th>
+		<th scope='col'>NÂº de Participantes</th>
+		<th scope='col'>MÃ­dia</th>
+		<th scope='col'>PraÃ§a</th>
+		<th scope='col'>PerÃ­odo</th>
+		<th scope='col'>PrevisÃ£o</th>
 		<th scope='col'>Recebido?</th>
 		<th scope='col'>Data Recebimento</th>
-		<th scope='col'>Operação</th>
+		<th scope='col'>OperaÃ§Ã£o</th>
     </tr>
 	<tr>
 	    <td><input type='number' name='n_participantes' min='1' placeholder='0' required /></td>
@@ -79,21 +79,21 @@
 		<td>
 		    <select name='praca'>
 				<option disabled selected> -- Selecionar -- </option>
-			    <option value='Brasília'>Brasília</option>
+			    <option value='BrasÃ­lia'>BrasÃ­lia</option>
 			    <option value='Nacional'>Nacional</option>
 	    </select>
 	    </td>
 	    <td><input type='number' name='periodo' min='1' max='36' placeholder='0' />
 		    <select name='periodo_tipo'>
 				<option disabled selected> -- Selecionar -- </option>
-				<option value='mês'>mês(es)</option>
+				<option value='mÃªs'>mÃªs(es)</option>
 			    <option value='ano'>ano(s)</option>
 			</select>
 			</td>
 	    <td><input type='number' id='previsao_pagamento' name='previsao_pagamento' min='1' max='90' placeholder='0' required /> dias</td>
 		<td>
 			<input name='status_recebimento' id='recebido' type='radio' value=1 />  Sim </BR>
-			<input name='status_recebimento' id='nao_recebido' type='radio' value=0 checked='checked'/>  Não
+			<input name='status_recebimento' id='nao_recebido' type='radio' value=0 checked='checked'/>  NÃ£o
 		</td>
 		<td><input type='date' id='data_recebimento' name='data_recebimento' size='13' placeholder='YYYY-MM-DD' disabled='disabled' /></td>
 		<script>
@@ -119,14 +119,14 @@
     <th scope='col'>Valor Original</th>
     <th scope='col'>Valor Pago</th>
     <th scope='col'>Tipo</th>
-    <th scope='col'>Descrição</th>
+    <th scope='col'>DescriÃ§Ã£o</th>
     <th scope='col'>Repetir?</th>
-    <th scope='col'>Operação</th>
+    <th scope='col'>OperaÃ§Ã£o</th>
   </tr>
   <tr>
     <td>
     <input name='status_despesa' id='status_despesa_paga' type='radio' value=1 />  Paga </BR>
-    <input name='status_despesa' id='status_despesa_nao_paga' type='radio' value=0 checked='checked'/>  Não Paga
+    <input name='status_despesa' id='status_despesa_nao_paga' type='radio' value=0 checked='checked'/>  NÃ£o Paga
     </td>
 	<td><input type='date' name='data_venc_despesa' size='13' placeholder='YYYY-MM-DD' /></td>
 	<td><input type='date' id='data_despesa' name='data_despesa' size='13' placeholder='YYYY-MM-DD' disabled='disabled' /></td>
@@ -145,29 +145,29 @@
     <td>
 	    <select name='tipo_despesa'>
 			<option disabled selected> -- Selecionar -- </option>
-		    <option value='Água'>Água</option>
+		    <option value='Ãgua'>Ãgua</option>
 		    <option value='Aluguel'>Aluguel</option>
-			<option value='Comissão Anelise'>Comissão Anelise</option>
-		    <option value='Condomínio'>Condomínio</option>
+			<option value='ComissÃ£o Anelise'>ComissÃ£o Anelise</option>
+		    <option value='CondomÃ­nio'>CondomÃ­nio</option>
 		    <option value='Contabilidade'>Contabilidade</option>
-		    <option value='Empréstimos'>Empréstimos</option>    
+		    <option value='EmprÃ©stimos'>EmprÃ©stimos</option>    
 		    <option value='Folha de Pagamento'>Folha de Pagamento</option>
-			<option value='Juros Bancários'>Juros Bancários</option>
+			<option value='Juros BancÃ¡rios'>Juros BancÃ¡rios</option>
 		    <option value='Impostos da Folha de Pagamento'>Impostos da Folha de Pagamento</option>
 		    <option value='Impostos de Nota Fiscal'>Impostos de Nota Fiscal</option>
 		    <option value='Investimentos'>Investimentos</option>
 		    <option value='Luz'>Luz</option>
-		    <option value='Manutenção e Reparos'>Manutenção e Reparos</option>
+		    <option value='ManutenÃ§Ã£o e Reparos'>ManutenÃ§Ã£o e Reparos</option>
 		    <option value='Motoboy'>Motoboy</option>
 		    <option value='Pagamento a Fornecedor'>Pagamento a Fornecedor</option>
 		    <option value='Papelaria'>Papelaria</option>
-		    <option value='Plano de Saúde'>Plano de Saúde</option>    
+		    <option value='Plano de SaÃºde'>Plano de SaÃºde</option>    
 		    <option value='Retiradas - Anelise'>Retiradas - Anelise</option>
 		    <option value='Retiradas - Vini'>Retiradas - Vini</option>
-			<option value='Taxas Bancárias'>Taxas Bancárias</option>
+			<option value='Taxas BancÃ¡rias'>Taxas BancÃ¡rias</option>
 		    <option value='Telefone Celular'>Telefone Celular</option>
 		    <option value='Telefone Fixo'>Telefone Fixo</option>
-		    <option value='Vale-Refeição'>Vale-Refeição</option>
+		    <option value='Vale-RefeiÃ§Ã£o'>Vale-RefeiÃ§Ã£o</option>
 		    <option value='Vale-Transporte'>Vale-Transporte</option>
 		    <option value='Vale-Cultura'>Vale-Cultura</option>
 		    <option value='Outros'>Outros</option>
@@ -179,7 +179,7 @@
     <input type="radio" name="repetir_despesa" onclick="document.getElementById('form_despesas').action='insert_repetir_despesas.php';" />  Sim</BR>
 	</fieldset>
 	<fieldset>
-    <input type="radio" name="repetir_despesa" onclick="document.getElementById('form_despesas').action='insert_despesas.php';" checked="checked" />  Não
+    <input type="radio" name="repetir_despesa" onclick="document.getElementById('form_despesas').action='insert_despesas.php';" checked="checked" />  NÃ£o
 	</fieldset>
     </td>
     <fieldset><td><button type='submit' name='incluir_despesa'>Incluir</button></td></fieldset>
@@ -199,7 +199,7 @@
     <th scope='col'>Valor da Venda</th>
     <th scope='col'>Forma de Pagamento</th>
     <th scope='col'>Parcelas</th>
-    <th scope='col'>Operação</th>
+    <th scope='col'>OperaÃ§Ã£o</th>
   </tr>
   <tr>
     <td><input type='text' name='nome' size='15' placeholder='Primeiro nome' /></td>
@@ -211,13 +211,13 @@
 		    <option value='Cadastro Premium'>Cadastro Premium</option>
 		    <option value='Ensaio Infantil'>Ensaio Infantil</option>
 		    <option value='Ensaio Infantil com Fotolivro 19x19'>Ensaio Infantil com Fotolivro 19x19</option>
-		    <option value='Ensaio Estúdio'>Ensaio Estúdio</option>
-		    <option value='Ensaio Estúdio com Fotolivro 20x30'>Ensaio Estúdio com Fotolivro 20x30</option>
+		    <option value='Ensaio EstÃºdio'>Ensaio EstÃºdio</option>
+		    <option value='Ensaio EstÃºdio com Fotolivro 20x30'>Ensaio EstÃºdio com Fotolivro 20x30</option>
 		    <option value='Ensaio Externo'>Ensaio Externo</option>
 		    <option value='Ensaio Externo com Fotolivro 20x30'>Ensaio Externo com Fotolivro 20x30</option>
 		    <option value='Acompanhante'>Acompanhante</option>
 		    <option value='Making of'>Making of</option>
-		    <option value='Produção de Figurino'>Produção de Figurino</option>
+		    <option value='ProduÃ§Ã£o de Figurino'>ProduÃ§Ã£o de Figurino</option>
 		    <option value='Maquiagem'>Maquiagem</option>
 			<option value='Fotolivro 19x19'>Fotolivro 19x19</option>
 		    <option value='Fotolivro 20x30'>Fotolivro 20x30</option>
@@ -229,9 +229,9 @@
     <td>
     <select name='forma_pagamento' id='forma_pagamento'>
 		<option disabled selected> -- Selecionar -- </option>
-	    <option id='Abatimento' value='Abatimento de Cachê'>Abatimento de Cachê</option>
-	    <option id='Crédito' value='Cartão de Crédito'>Cartão de Crédito</option>
-	    <option id='Débito' value='Cartão de Débito'>Cartão de Débito</option>
+	    <option id='Abatimento' value='Abatimento de CachÃª'>Abatimento de CachÃª</option>
+	    <option id='CrÃ©dito' value='CartÃ£o de CrÃ©dito'>CartÃ£o de CrÃ©dito</option>
+	    <option id='DÃ©bito' value='CartÃ£o de DÃ©bito'>CartÃ£o de DÃ©bito</option>
 	    <option id='Dinheiro' value='Dinheiro'>Dinheiro</option>
 	    <option id='PagSeguro' value='PagSeguro'>PagSeguro</option>
     </select>

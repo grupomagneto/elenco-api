@@ -1,11 +1,10 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-	session_start();
 ?>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang="pt-BR">
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <title>Jobs - Magneto Elenco</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,900,900italic,400,400italic' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css'/>
@@ -57,8 +56,8 @@ $(document).ready(function(){
      			<th>Produtora - Cliente - Campanha</th>
 				<th>Participantes</th>
 				<th>Bruto</th>
-				<th>Líquido</th>
-				<th>Nº da Nota</th>
+				<th>LÃ­quido</th>
+				<th>NÂº da Nota</th>
 				<th>Nota Fiscal</th>
 	  			<th>Recebimento</th>
 			</tr>

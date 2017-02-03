@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
 // session_start();
 $hoje = date('Y-m-d', time());
@@ -23,13 +23,13 @@ function mask($val, $mask)
 	}
 function extenso($valor = 0, $maiusculas = false) {
 
-	$singular = array("centavo", "real", "mil", "milh„o", "bilh„o", "trilh„o", "quatrilh„o");
-	$plural = array("centavos", "reais", "mil", "milhıes", "bilhıes", "trilhıes", "quatrilhıes");
+	$singular = array("centavo", "real", "mil", "milh√£o", "bilh√£o", "trilh√£o", "quatrilh√£o");
+	$plural = array("centavos", "reais", "mil", "milh√µes", "bilh√µes", "trilh√µes", "quatrilh√µes");
 
 	$c = array("", "cem", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos");
 	$d = array("", "dez", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa");
 	$d10 = array("dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezesete", "dezoito", "dezenove");
-	$u = array("", "um", "dois", "trÍs", "quatro", "cinco", "seis", "sete", "oito", "nove");
+	$u = array("", "um", "dois", "tr√™s", "quatro", "cinco", "seis", "sete", "oito", "nove");
 
 	$z = 0;
 	$rt = "";
@@ -59,8 +59,8 @@ function extenso($valor = 0, $maiusculas = false) {
 		return($rt ? $rt : "zero");
 	} else {
 
-	// if ($rt) $rt=ereg_replace(" E "," e ",ucwords($rt)); 
-	if ($rt) $rt=ereg_replace(" E "," e ",strtolower($rt));
+	// if ($rt) $rt=preg_replace("/ E /"," e ",ucwords($rt)); 
+	if ($rt) $rt=preg_replace("/ E /"," e ",strtolower($rt));
 	return (($rt) ? ($rt) : "Zero");
 	}
 
@@ -97,19 +97,19 @@ function extenso($valor = 0, $maiusculas = false) {
 			$abatimento_cache = number_format($abatimento_cache, 2, ",", ".");
 
 			$sacado_extenso = extenso($sacado);
-			$sacado_extenso = ereg_replace(" E "," e ",strtolower($sacado_extenso));
+			$sacado_extenso = preg_replace("/ E /"," e ",strtolower($sacado_extenso));
 			$sacado = number_format($sacado, 2, ",", ".");
 
 			$cache_liquido_extenso = extenso($cache_liquido);
-			$cache_liquido_extenso = ereg_replace(" E "," e ",strtolower($cache_liquido_extenso));
+			$cache_liquido_extenso = preg_replace("/ E /"," e ",strtolower($cache_liquido_extenso));
 			$cache_liquido = number_format($cache_liquido, 2, ",", ".");
 
 			$saldo_extenso = extenso($saldo);
-			$saldo_extenso = ereg_replace(" E "," e ",strtolower($saldo_extenso));
+			$saldo_extenso = preg_replace("/ E /"," e ",strtolower($saldo_extenso));
 			$saldo = number_format($saldo, 2, ",", ".");
 
 		if ($sacado == 0) {
-			echo "N„o existe pagamento registrado para este cachÍ.";
+			echo "N√£o existe pagamento registrado para este cach√™.";
 		} elseif ($sacado > 0){
 
 			$dia_abatimento = date('d', strtotime($data_abatimento));
@@ -128,7 +128,7 @@ function extenso($valor = 0, $maiusculas = false) {
 			switch ($mes_abatimento){
 			case 1: $mes_abatimento = "janeiro"; break;
 			case 2: $mes_abatimento = "fevereiro"; break;
-			case 3: $mes_abatimento = "marÁo"; break;
+			case 3: $mes_abatimento = "mar√ßo"; break;
 			case 4: $mes_abatimento = "abril"; break;
 			case 5: $mes_abatimento = "maio"; break;
 			case 6: $mes_abatimento = "junho"; break;
@@ -142,7 +142,7 @@ function extenso($valor = 0, $maiusculas = false) {
 			switch ($mes_cheque){
 			case 1: $mes_cheque = "janeiro"; break;
 			case 2: $mes_cheque = "fevereiro"; break;
-			case 3: $mes_cheque = "marÁo"; break;
+			case 3: $mes_cheque = "mar√ßo"; break;
 			case 4: $mes_cheque = "abril"; break;
 			case 5: $mes_cheque = "maio"; break;
 			case 6: $mes_cheque = "junho"; break;
@@ -156,7 +156,7 @@ function extenso($valor = 0, $maiusculas = false) {
 			switch ($mes_job){
 			case 1: $mes_job = "janeiro"; break;
 			case 2: $mes_job = "fevereiro"; break;
-			case 3: $mes_job = "marÁo"; break;
+			case 3: $mes_job = "mar√ßo"; break;
 			case 4: $mes_job = "abril"; break;
 			case 5: $mes_job = "maio"; break;
 			case 6: $mes_job = "junho"; break;
@@ -170,7 +170,7 @@ function extenso($valor = 0, $maiusculas = false) {
 			switch ($mes_hoje){
 			case 1: $mes_hoje = "janeiro"; break;
 			case 2: $mes_hoje = "fevereiro"; break;
-			case 3: $mes_hoje = "marÁo"; break;
+			case 3: $mes_hoje = "mar√ßo"; break;
 			case 4: $mes_hoje = "abril"; break;
 			case 5: $mes_hoje = "maio"; break;
 			case 6: $mes_hoje = "junho"; break;
@@ -184,19 +184,19 @@ function extenso($valor = 0, $maiusculas = false) {
 			switch ($semana_hoje) {
 			case 0: $semana_hoje = "domingo"; break;
 			case 1: $semana_hoje = "segunda-feira"; break;
-			case 2: $semana_hoje = "terÁa-feira"; break;
+			case 2: $semana_hoje = "ter√ßa-feira"; break;
 			case 3: $semana_hoje = "quarta-feira"; break;
 			case 4: $semana_hoje = "quinta-feira"; break;
 			case 5: $semana_hoje = "sexta-feira"; break;
-			case 6: $semana_hoje = "s·bado"; break;
+			case 6: $semana_hoje = "s√°bado"; break;
 			}
 	
 		echo "
 			<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 			<html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 			<head>
-			<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
-			<title>Recibo de QuitaÁ„o</title>
+			<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
+			<title>Recibo de Quita√ß√£o</title>
 			<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,900,900italic,400,400italic' />
 				<style type='text/css'>
 				h1 { 
@@ -235,26 +235,26 @@ function extenso($valor = 0, $maiusculas = false) {
 			<div class='todo'>
 			    <center>
 				<img src='images/logo.png' width='150' height='150' />
-				<h1>Recibo de QuitaÁ„o</h1>
+				<h1>Recibo de Quita√ß√£o</h1>
 				<BR /><BR /></center>
 				<div class='conteudo' align='justify'>
 				<p>   Eu, <strong>$nome</strong>, portador(a) de CPF: $cpf, declaro ter recebido da empresa MAGNETO ELENCO com sede no
-				CENTRO DE ATIVIDADES 02, BLOCO A, LOJA 01 - LAGO NORTE, BRASÕLIA - DF, a import‚ncia de
-				<strong>R$: $sacado ($sacado_extenso )</strong>, de um total de R$: $cache_liquido ($cache_liquido_extenso ), referente aos serviÁos por mim prestados ao cliente
+				CENTRO DE ATIVIDADES 02, BLOCO A, LOJA 01 - LAGO NORTE, BRAS√çLIA - DF, a import√¢ncia de
+				<strong>R$: $sacado ($sacado_extenso )</strong>, de um total de R$: $cache_liquido ($cache_liquido_extenso ), referente aos servi√ßos por mim prestados ao cliente
 				<strong>$cliente_job</strong> no dia <strong>$dia_job de $mes_job de $ano_job</strong>, para a campanha
 				<strong>$campanha</strong> produzida pela produtora <strong>$produzido_por</strong>,
-				nos termos do contrato entre nÛs firmados e pagos na forma de:</p>";
+				nos termos do contrato entre n√≥s firmados e pagos na forma de:</p>";
 				if ($abatimento_cache != NULL && $abatimento_cache > 0) {
-					echo "<p>- UtilizaÁ„o de <strong>R$: $abatimento_cache</strong> para: <strong>$produto_abatimento</strong> em $dia_abatimento de $mes_abatimento de $ano_abatimento;</p>";
+					echo "<p>- Utiliza√ß√£o de <strong>R$: $abatimento_cache</strong> para: <strong>$produto_abatimento</strong> em $dia_abatimento de $mes_abatimento de $ano_abatimento;</p>";
 				} if ($n_cheque != NULL && $n_cheque > 0) {
-					echo "<p>- Cheque de <strong>N∫ $n_cheque</strong> no valor de <strong>R$: $valor_cheque</strong> entregue em $dia_cheque de $mes_cheque de $ano_cheque.<BR /></p>";
+					echo "<p>- Cheque de <strong>N¬∫ $n_cheque</strong> no valor de <strong>R$: $valor_cheque</strong> entregue em $dia_cheque de $mes_cheque de $ano_cheque.<BR /></p>";
 				}
 				if ($saldo != 0) {
-					echo "<p><div id='observacao'><strong>ObsservaÁ„o: Estou ciente da existÍncia de um saldo de R$: $saldo ($saldo_extenso ) em meu favor.</strong></p></div>";
+					echo "<p><div id='observacao'><strong>Obsserva√ß√£o: Estou ciente da exist√™ncia de um saldo de R$: $saldo ($saldo_extenso ) em meu favor.</strong></p></div>";
 				} echo "			
-				<BR /><p>Para maior clareza, firmo o presente, dando plena, irrestrita e irrevog·vel quitaÁ„o dos valores supracitados.</p>
+				<BR /><p>Para maior clareza, firmo o presente, dando plena, irrestrita e irrevog√°vel quita√ß√£o dos valores supracitados.</p>
 				<BR /><BR /><center>
-				<p>BrasÌlia, $semana_hoje, $dia_hoje de $mes_hoje de $ano_hoje.</p>
+				<p>Bras√≠lia, $semana_hoje, $dia_hoje de $mes_hoje de $ano_hoje.</p>
 				<BR /><BR />
 				<p>______________________________________________</p>
 				<p>$nome</p>

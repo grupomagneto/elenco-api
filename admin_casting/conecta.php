@@ -1,4 +1,4 @@
-<?php
+<?php header('Content-Type: text/html; charset=utf-8');
 
 // DB Localhost
 $user = 'root';
@@ -16,6 +16,7 @@ $success = mysqli_real_connect(
    $db,
    $port
 );
+mysqli_set_charset($link,"utf8");
 
 // DB Online
 // $user = 'vinigoulart1';
@@ -31,6 +32,7 @@ $success = mysqli_real_connect(
 //    $password,
 //    $db
 // );
+// mysqli_set_charset($link,"utf8");
 
 // DB Online 2
 $user2 = 'vinigoulart12';
@@ -46,4 +48,5 @@ $success2 = mysqli_real_connect(
    $password2,
    $db2
 );
+mysqli_set_charset($link2,"utf8");
 ?>

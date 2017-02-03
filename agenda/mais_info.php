@@ -57,6 +57,7 @@ function mask($val, $mask)
 				}
 			$tipo_cadastro_efetivado 	= $row['tipo_cadastro_efetivado'];
 			$dt_nascimento 				= $row['dt_nascimento'];
+			$dt_nascimento 				= date('d/m/Y', strtotime($dt_nascimento));
 			$sexo 						= $row['sexo'];
 			$bairro 					= $row['bairro'];
 			$cor_pele 					= $row['cor_pele'];
@@ -64,8 +65,9 @@ function mask($val, $mask)
 			$instagram 					= $row['instagram'];
 			$twitter 					= $row['twitter'];
 			$observacao 				= $row['observacao'];
-			$id_typeform 				= $row['id_typeform'];
-			$dt_nascimento 				= date( "d/m/Y", strtotime($dt_nascimento));
+			$timestamp 					= $row['dt_insercao'];
+			$timestamp					= date('Y-m-d', strtotime($timestamp));
+			$arquivo					= $id."_".$timestamp;
 			$comparecimento 			= $row['comparecimento'];
 			$status_venda				= $row['status_venda'];
 			$produto					= $row['produto'];
@@ -73,9 +75,9 @@ function mask($val, $mask)
 			$n_parcelas					= $row['n_parcelas'];
 			$valor_venda 				= $row['valor_venda'];
 		}
-if ($id_typeform != NULL) {
-echo"	<center><div id='corpo'><a href='fotos/".$id_typeform."_01.jpg'><img src='fotos/".$id_typeform."_01.jpg' height=100></a>
-		<a href='fotos/".$id_typeform."_02.jpg'><img src='fotos/".$id_typeform."_02.jpg' height=100></a>";
+if ($arquivo != NULL) {
+echo"	<center><div id='corpo'><a href='../cadastro/fotos/".$arquivo."_01.jpg'><img src='../cadastro/fotos/".$arquivo."_01.jpg' height=100></a>
+		<a href='../cadastro/fotos/".$arquivo."_02.jpg'><img src='../cadastro/fotos/".$arquivo."_02.jpg' height=100></a>";
 }
 echo"<h1>".$nome."</h1>
 <p><table border='0' cellpadding='2' cellspacing='0' align='center'>

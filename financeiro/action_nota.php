@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 // $db = mysql_connect("p3plcpnl0612.prod.phx3.secureserver.net","vinigoulart1","ThM]HETPv@");
 //  if (!$db) {
 //  die("Database connection failed miserably: " . mysql_error());
@@ -7,13 +7,12 @@
 //  if (!$db_select) {
 //  die("Database selection also failed miserably: " . mysql_error());
 //  }
-session_start();
 ?>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
-<title>Emissão de Nota Fiscal</title>
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
+<title>EmissÃ£o de Nota Fiscal</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.css'/>
 <link rel='stylesheet' type='text/css' href='DataTables/style.css'/>
@@ -52,14 +51,14 @@ session_start();
 		$n_nota_fiscal = $_SESSION['n_nota_fiscal'.$id];
 		$data_nota = $_SESSION['data_nota'.$id];
 echo "	<form action='action_altera_nota.php' method='post'>";
-echo "	Nº da Nota:";
+echo "	NÂº da Nota:";
 echo "	<p><input type='number' name='novo_n_nota_fiscal' "; 
 		if ($n_nota_fiscal != NULL) {
 		    echo "placeholder='$n_nota_fiscal'></p></BR>";
 		} else {
 			echo "></p></BR>";
 		}	
-echo "	Data de Emissão:";
+echo "	Data de EmissÃ£o:";
 echo "	<p><input type='text' name='nova_data_nota' "; 
 		if ($data_nota != NULL) {
 		    echo "placeholder='$data_nota'></p></BR>";

@@ -1,6 +1,5 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-session_start();
 	if (!empty($_POST['alterar'])) {
 	    $id = $_POST['alterar'];
 		$novo_valor_despesa = $_POST['novo_valor_despesa'.$id];

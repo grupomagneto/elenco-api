@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
 	$start_month = 1;
 	$end_month = 12;
@@ -10,7 +10,7 @@ while ($year <= $end_year) {
   	while ($month <= $end_month) {
 		$sql_pago = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS pago FROM financeiro WHERE MONTH(data_job) = '$month' AND YEAR(data_job) = '$year' AND tipo_cache = 'Cadastro pago'";
 		$sql_gratuitos = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS gratuitos FROM financeiro WHERE MONTH(data_job) = '$month' AND YEAR(data_job) = '$year' AND tipo_cache = 'Cadastro Gratuito'";
-		$sql_primeiros = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS primeiros FROM financeiro WHERE MONTH(data_job) = '$month' AND YEAR(data_job) = '$year' AND tipo_cache = '1° Cache Cadastro Gratuito'";
+		$sql_primeiros = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS primeiros FROM financeiro WHERE MONTH(data_job) = '$month' AND YEAR(data_job) = '$year' AND tipo_cache = '1Â° Cache Cadastro Gratuito'";
 		$sql_vendas = "SELECT SUM(valor_venda) AS vendas FROM financeiro WHERE YEAR(data_venda) = '$year' AND MONTH(data_venda) = '$month'";
 		$result = mysqli_query($link, $sql_pago);
 		$row = mysqli_fetch_array($result);
@@ -53,7 +53,7 @@ while ($year <= $end_year) {
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <title>Dashboard - Magneto Elenco</title>
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css'/>
@@ -72,7 +72,7 @@ google.charts.setOnLoadCallback(drawStacked);
 
 function drawStacked() {
       var data = google.visualization.arrayToDataTable([
-        ['Mês', '1º Cachê', 'Gratuito', 'Pago', 'Vendas'],
+        ['MÃªs', '1Âº CachÃª', 'Gratuito', 'Pago', 'Vendas'],
 		['Jan',  <?php echo $primeiros12015;?>, <?php echo $gratuitos12015;?>, <?php echo $pago12015;?>, <?php echo $vendas12015;?>],
 		['Fev',  <?php echo $primeiros22015;?>, <?php echo $gratuitos22015;?>, <?php echo $pago22015;?>, <?php echo $vendas22015;?>],
 		['Mar',  <?php echo $primeiros32015;?>, <?php echo $gratuitos32015;?>, <?php echo $pago32015;?>, <?php echo $vendas32015;?>],
@@ -88,7 +88,7 @@ function drawStacked() {
       ]);
 
       var options = {
-        title: 'Análise da Origem da Receita',
+        title: 'AnÃ¡lise da Origem da Receita',
         chartArea: {width: '50%'},
         isStacked: true,
         hAxis: {

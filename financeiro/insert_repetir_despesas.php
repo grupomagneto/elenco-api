@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 session_start();
 	$status_despesa 		= $_POST['status_despesa'];
 	$data_venc_despesa 		= $_POST['data_venc_despesa'];
@@ -8,9 +8,9 @@ session_start();
 	$tipo_despesa 			= $_POST['tipo_despesa'];
 	$descricao_despesa 		= $_POST['descricao_despesa'];
 	if ($status_despesa == 1) {
-		echo "<script>alert('Não é possível inserir uma despesa paga repetidamente.');</script>";
+		echo "<script>alert('NÃ£o Ã© possÃ­vel inserir uma despesa paga repetidamente.');</script>";
 	} elseif ($status_despesa == 0 && $data_venc_despesa == NULL || $status_despesa == 0 && $valor_original_despesa == NULL || $status_despesa == 0 && $tipo_despesa == NULL || $status_despesa == 0 && $descricao_despesa == NULL){
-		echo "<script>alert('Despesa não inserida. Por favor complete todos os campos e tente novamente.');</script>";
+		echo "<script>alert('Despesa nÃ£o inserida. Por favor complete todos os campos e tente novamente.');</script>";
 	} else {
 	$_SESSION['status_despesa'] 		= $_POST['status_despesa'];
 	$_SESSION['data_venc_despesa'] 		= $_POST['data_venc_despesa'];
@@ -23,7 +23,7 @@ echo "
 	<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 	<html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 	<head>
-	<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+	<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 	<link rel='stylesheet' type='text/css' href='DataTables/datatables.css'/>
 	<link rel='stylesheet' type='text/css' href='DataTables/style.css'/>
@@ -42,11 +42,11 @@ echo "
 		</style>
 	</head>
 	<body>
-	<center><div id='corpo'><p><h1>Repetição da Despesa:</h1></p></BR>
+	<center><div id='corpo'><p><h1>RepetiÃ§Ã£o da Despesa:</h1></p></BR>
 	<form action='action_repetir_despesa.php' method='post'>
-Nº de vezes:
+NÂº de vezes:
 <p><input type='number' min='2' name='vezes' placeholder='0' required></p></BR>
-Frequência:
+FrequÃªncia:
 <p><select name='frequencia' required>
 		    <option value='Mensal'>Mensal</option>
 		    <option value='Anual'>Anual</option>

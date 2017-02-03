@@ -1,6 +1,5 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
-session_start();
 	$data_job = $_SESSION['data_job'];
 	$produzido_por = $_SESSION['produzido_por'];
 	$cliente_job = $_SESSION['cliente_job'];
@@ -34,11 +33,11 @@ session_start();
 				$cache_bruto = number_format($cache_bruto,2,".","");
 				$cache_liquido = number_format($cache_liquido,2,".","");
 				if ($data_job != NULL && $produzido_por != NULL && $cliente_job != NULL && $campanha != NULL && $nome != NULL && $sobrenome != NULL && $cache_bruto != NULL && $cache_liquido != NULL && $tipo_job != NULL && $tipo_cache != NULL) {
-					$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, status_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'Após recebimento', '$emitiu_nota', '$status_recebimento', 0)";
+					$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, status_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'ApÃ³s recebimento', '$emitiu_nota', '$status_recebimento', 0)";
 					// echo $sql;
 					mysqli_query($link, $sql);
 				} elseif ($data_job == NULL || $produzido_por == NULL || $cliente_job == NULL || $campanha == NULL || $nome == NULL || $sobrenome == NULL || $cache_bruto == NULL || $cache_liquido == NULL || $tipo_job == NULL || $tipo_cache == NULL) {
-					echo "<script>alert('Cachê não inserido. Por favor complete todos os campos e tente novamente.');</script>";
+					echo "<script>alert('1-CachÃª nÃ£o inserido. Por favor complete todos os campos e tente novamente. data_job:$data_job, produzido_por:$produzido_por, cliente_job:$cliente_job, campanha:$campanha, nome:$nome, sobrenome:$sobrenome, cache_bruto:$cache_bruto, cache_liquido:$cache_liquido, tipo_job:$tipo_job, tipo_cache:$tipo_cache');</script>";
 				}
 				$part++;
 			}
@@ -47,6 +46,8 @@ session_start();
 				$sql = "INSERT INTO financeiro (tipo_entrada, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, cache_bruto, tipo_cache, emitiu_nota, status_recebimento) VALUES ('Cache', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$comissao', 'Extra', '$emitiu_nota', '$status_recebimento')";
 				mysqli_query($link, $sql);
 			}
+		$caches = $part - 1;
+		echo "$caches cachÃªs inseridos com sucesso.";
 	} elseif ($emitiu_nota == 1 && $status_recebimento == 1) {
 			$part = 1;
 			while ($part <= $n_participantes) {
@@ -60,11 +61,11 @@ session_start();
 				$cache_bruto = number_format($cache_bruto,2,".","");
 				$cache_liquido = number_format($cache_liquido,2,".","");
 				if ($data_job != NULL && $produzido_por != NULL && $cliente_job != NULL && $campanha != NULL && $nome != NULL && $sobrenome != NULL && $cache_bruto != NULL && $cache_liquido != NULL && $tipo_job != NULL && $tipo_cache != NULL && $n_nota_fiscal != NULL && $data_nota != NULL && $data_recebimento != NULL) {
-					$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, n_nota_fiscal, data_nota, status_recebimento, data_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'Após recebimento', '$emitiu_nota', '$n_nota_fiscal', '$data_nota', '$status_recebimento', '$data_recebimento', 0)";
+					$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, n_nota_fiscal, data_nota, status_recebimento, data_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'ApÃ³s recebimento', '$emitiu_nota', '$n_nota_fiscal', '$data_nota', '$status_recebimento', '$data_recebimento', 0)";
 					// echo $sql;
 					mysqli_query($link, $sql);
 				} elseif ($data_job == NULL || $produzido_por == NULL || $cliente_job == NULL || $campanha == NULL || $nome == NULL || $sobrenome == NULL || $cache_bruto == NULL || $cache_liquido == NULL || $tipo_job == NULL || $tipo_cache == NULL || $n_nota_fiscal == NULL || $data_nota == NULL || $data_recebimento == NULL) {
-					echo "<script>alert('Cachê não inserido. Por favor complete todos os campos e tente novamente.');</script>";
+					echo "<script>alert('2-CachÃª nÃ£o inserido. Por favor complete todos os campos e tente novamente.');</script>";
 				}
 			$part++;
 			}
@@ -73,6 +74,8 @@ session_start();
 				$sql = "INSERT INTO financeiro (tipo_entrada, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, cache_bruto, tipo_cache, emitiu_nota, n_nota_fiscal, data_nota, status_recebimento, data_recebimento) VALUES ('Cache', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$comissao', 'Extra', '$emitiu_nota', '$n_nota_fiscal', '$data_nota', '$status_recebimento', '$data_recebimento')";
 				mysqli_query($link, $sql);
 			}
+		$caches = $part - 1;
+		echo "$caches cachÃªs inseridos com sucesso.";
 	} elseif ($emitiu_nota == 1 && $status_recebimento == 0) {
 				$part = 1;
 				while ($part <= $n_participantes) {
@@ -86,11 +89,11 @@ session_start();
 					$cache_bruto = number_format($cache_bruto,2,".","");
 					$cache_liquido = number_format($cache_liquido,2,".","");
 					if ($data_job != NULL && $produzido_por != NULL && $cliente_job != NULL && $campanha != NULL && $nome != NULL && $sobrenome != NULL && $cache_bruto != NULL && $cache_liquido != NULL && $tipo_job != NULL && $tipo_cache != NULL && $n_nota_fiscal != NULL && $data_nota != NULL) {
-						$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, n_nota_fiscal, data_nota, status_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'Após recebimento', '$emitiu_nota', '$n_nota_fiscal', '$data_nota', '$status_recebimento', 0)";
+						$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, n_nota_fiscal, data_nota, status_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'ApÃ³s recebimento', '$emitiu_nota', '$n_nota_fiscal', '$data_nota', '$status_recebimento', 0)";
 					// echo $sql;
 					mysqli_query($link, $sql);
 				} elseif ($data_job == NULL || $produzido_por == NULL || $cliente_job == NULL || $campanha == NULL || $nome == NULL || $sobrenome == NULL || $cache_bruto == NULL || $cache_liquido == NULL || $tipo_job == NULL || $tipo_cache == NULL || $n_nota_fiscal == NULL || $data_nota == NULL) {
-					echo "<script>alert('Cachê não inserido. Por favor complete todos os campos e tente novamente.');</script>";
+					echo "<script>alert('3-CachÃª nÃ£o inserido. Por favor complete todos os campos e tente novamente.');</script>";
 					}
 				$part++;
 				}
@@ -99,6 +102,8 @@ session_start();
 					$sql = "INSERT INTO financeiro (tipo_entrada, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, cache_bruto, tipo_cache, emitiu_nota, n_nota_fiscal, data_nota, status_recebimento) VALUES ('Cache', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$comissao', 'Extra', '$emitiu_nota', '$n_nota_fiscal', '$data_nota', '$status_recebimento')";
 					mysqli_query($link, $sql);
 				}
+		$caches = $part - 1;
+		echo "$caches cachÃªs inseridos com sucesso.";
 	} elseif ($emitiu_nota == 0 && $status_recebimento == 1) {
 				$part = 1;
 				while ($part <= $n_participantes) {
@@ -112,11 +117,11 @@ session_start();
 					$cache_bruto = number_format($cache_bruto,2,".","");
 					$cache_liquido = number_format($cache_liquido,2,".","");
 					if ($data_job != NULL && $produzido_por != NULL && $cliente_job != NULL && $campanha != NULL && $nome != NULL && $sobrenome != NULL && $cache_bruto != NULL && $cache_liquido != NULL && $tipo_job != NULL && $tipo_cache != NULL && $data_recebimento != NULL) {
-						$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, status_recebimento, data_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'Após recebimento', '$emitiu_nota', '$status_recebimento', '$data_recebimento', 0)";
+						$sql = "INSERT INTO financeiro (tipo_entrada, midia, praca, periodo, periodo_tipo, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, nome, sobrenome, cache_bruto, cache_liquido, tipo_job, tipo_cache, opcao_pagamento, emitiu_nota, status_recebimento, data_recebimento, status_pagamento) VALUES ('Cache', '$midia', '$praca', '$periodo', '$periodo_tipo', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$nome', '$sobrenome', '$cache_bruto', '$cache_liquido', '$tipo_job', '$tipo_cache', 'ApÃ³s recebimento', '$emitiu_nota', '$status_recebimento', '$data_recebimento', 0)";
 					// echo $sql;
 					mysqli_query($link, $sql);
 				} elseif ($data_job == NULL || $produzido_por == NULL || $cliente_job == NULL || $campanha == NULL || $nome == NULL || $sobrenome == NULL || $cache_bruto == NULL || $cache_liquido == NULL || $tipo_job == NULL || $tipo_cache == NULL || $data_recebimento == NULL) {
-					echo "<script>alert('Cachê não inserido. Por favor complete todos os campos e tente novamente.');</script>";
+					echo "<script>alert('4-CachÃª nÃ£o inserido. Por favor complete todos os campos e tente novamente.');</script>";
 					}
 				$part++;
 				}
@@ -125,6 +130,8 @@ session_start();
 					$sql = "INSERT INTO financeiro (tipo_entrada, previsao_pagamento, data_job, produzido_por, cliente_job, campanha, cache_bruto, tipo_cache, emitiu_nota, status_recebimento, data_recebimento) VALUES ('Cache', '$previsao_pagamento', '$data_job', '$produzido_por', '$cliente_job', '$campanha', '$comissao', 'Extra', '$emitiu_nota', '$status_recebimento', '$data_recebimento')";
 					mysqli_query($link, $sql);
 				}
+		$caches = $part - 1;
+		echo "$caches cachÃªs inseridos com sucesso.";
 	}
 	mysqli_close($link);
 ?>

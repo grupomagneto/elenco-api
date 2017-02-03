@@ -5,13 +5,13 @@ if(isset($_POST['sub'])){
   if($usuario_magneto === 'financeiro' && $password_magneto === 'ProfessorXavier2016'){
     $_SESSION['login'] = true; header('LOCATION:inicio.html'); die();
   }
-  if($usuario_magneto !== 'financeiro')$userError = 'Usuário Inválido';
-  if($password_magneto !== 'ProfessorXavier2016')$passError = 'Senha Inválida';
+  if($usuario_magneto !== 'financeiro')$userError = 'UsuÃ¡rio InvÃ¡lido';
+  if($password_magneto !== 'ProfessorXavier2016')$passError = 'Senha InvÃ¡lida';
 }
 echo "<!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='pt-BR' lang='pt-BR'>
    <head>
-		<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+		<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 		<title>Sistema Financeiro - Magneto Elenco</title>
    </head>
    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,900,900italic,400,400italic' />
@@ -44,7 +44,7 @@ echo "<!DOCTYPE html>
 	<center><img src='images/logo.png' width='150' align='center' /></center>
   <form name='input' action='{$_SERVER['PHP_SELF']}' method='post'>
   <span style='color: gray;'>
-    <div id='texto'><label for='username'>Usuário: </label></div><div id='caixas'><input type='text' value='$usuario_magneto' id='username' name='username' size='23' />
+    <div id='texto'><label for='username'>UsuÃ¡rio: </label></div><div id='caixas'><input type='text' value='$usuario_magneto' id='username' name='username' size='23' />
     <div class='error'>$userError</div></div>
     <div id='texto'><label for='password'>Senha: </label></div><div id='caixas'><input type='password' value='$password_magneto' id='password' name='password' size='23' />
     <div class='error'>$passError</div></div><BR />

@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 session_start();
 	$_SESSION['data_job'] = $_POST['data_job'];
 	$_SESSION['produzido_por'] = $_POST['produzido_por'];
@@ -19,7 +19,7 @@ session_start();
 echo "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <style type='text/css'>
 #corpo {
     max-width:90%;

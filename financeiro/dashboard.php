@@ -1,7 +1,7 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php
 include("conecta.php");
 	$adicional = 45;
-// Gráfico 01
+// GrÃ¡fico 01
 	$start_month = 1;
 	$end_month = 12;
 	$start_year = 2016;
@@ -44,7 +44,7 @@ while ($year <= $end_year) {
 	$month = 1;
 }
 
-// Gráfico 02
+// GrÃ¡fico 02
 	$start_mes = 1;
 	$end_mes = 12;
 	$start_ano = 2016;
@@ -56,9 +56,9 @@ while ($ano <= $end_ano) {
   	while ($mes <= $end_mes) {
 		$comando_pago = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS pago FROM financeiro WHERE MONTH(data_job) = '$mes' AND YEAR(data_job) = '$ano' AND tipo_cache = 'Cadastro Premium'";
 		$comando_gratuitos = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS gratuitos FROM financeiro WHERE MONTH(data_job) = '$mes' AND YEAR(data_job) = '$ano' AND tipo_cache = 'Cadastro Gratuito'";
-		$comando_primeiros = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS primeiros FROM financeiro WHERE MONTH(data_job) = '$mes' AND YEAR(data_job) = '$ano' AND tipo_cache = '1º Cachê Cadastro Gratuito'";
-		$comando_vendas = "SELECT SUM(valor_venda) AS vendas FROM financeiro WHERE forma_pagamento <> 'Abatimento de Cachê' AND YEAR(data_venda) = '$ano' AND MONTH(data_venda) = '$mes'";
-		$comando_abatimento = "SELECT SUM(valor_venda) AS abatimento FROM financeiro WHERE forma_pagamento = 'Abatimento de Cachê' AND YEAR(data_venda) = '$ano' AND MONTH(data_venda) = '$mes'";
+		$comando_primeiros = "SELECT SUM(cache_bruto) - SUM(cache_liquido) AS primeiros FROM financeiro WHERE MONTH(data_job) = '$mes' AND YEAR(data_job) = '$ano' AND tipo_cache = '1Âº CachÃª Cadastro Gratuito'";
+		$comando_vendas = "SELECT SUM(valor_venda) AS vendas FROM financeiro WHERE forma_pagamento <> 'Abatimento de CachÃª' AND YEAR(data_venda) = '$ano' AND MONTH(data_venda) = '$mes'";
+		$comando_abatimento = "SELECT SUM(valor_venda) AS abatimento FROM financeiro WHERE forma_pagamento = 'Abatimento de CachÃª' AND YEAR(data_venda) = '$ano' AND MONTH(data_venda) = '$mes'";
 		$igual = mysqli_query($link, $comando_pago);
 		$linha = mysqli_fetch_array($igual);
 		$pago = $linha['pago'];
@@ -104,7 +104,7 @@ while ($ano <= $end_ano) {
 	$ano++;
 	$mes = 1;
 }
-// Gráfico 03
+// GrÃ¡fico 03
 	$sql_recebido = "SELECT SUM(cache_bruto) AS recebido FROM financeiro WHERE MONTH(data_recebimento) = MONTH(CURRENT_DATE) AND YEAR(data_recebimento) = YEAR(CURRENT_DATE) AND status_recebimento = 1";
 		$igual = mysqli_query($link, $sql_recebido);
 		$linha = mysqli_fetch_array($igual);
@@ -122,7 +122,7 @@ while ($ano <= $end_ano) {
 
 	$saldo = $recebido - $caches_pagos - $despesas;
 
-// Gráfico 04 (barras)
+// GrÃ¡fico 04 (barras)
 // 	$start_mes = 1;
 // 	$end_mes = 12;
 // 	$start_ano = 2016;
@@ -158,7 +158,7 @@ while ($ano <= $end_ano) {
 // $mes = 1;
 // }
 
-//Gráfico 04 (linhas)
+//GrÃ¡fico 04 (linhas)
 	$start_month = 1;
 	$end_month = 12;
 	$start_year = 2016;
@@ -220,7 +220,7 @@ $month = 1;
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <link rel='stylesheet' type='text/css' href='DataTables/datatables.min.css'/>
 <link rel='stylesheet' type='text/css' href='DataTables/style.css'/>
@@ -239,7 +239,7 @@ $month = 1;
 	google.charts.setOnLoadCallback(grafico04);
   function grafico01() {
     var data = google.visualization.arrayToDataTable([
-      ['', 'Bruto Recebido', 'Líquido Gerado', 'Despesas Pagas', 'Resultado'],
+      ['', 'Bruto Recebido', 'LÃ­quido Gerado', 'Despesas Pagas', 'Resultado'],
       ['Jan', <?php echo $bruto12016;?>, <?php echo $liquido12016;?>, <?php echo $despesas12016;?>, <?php echo $resultado12016;?>],
       ['Fev', <?php echo $bruto22016;?>, <?php echo $liquido22016;?>, <?php echo $despesas22016;?>, <?php echo $resultado22016;?>],
       ['Mar', <?php echo $bruto32016;?>, <?php echo $liquido32016;?>, <?php echo $despesas32016;?>, <?php echo $resultado32016;?>],
@@ -267,7 +267,7 @@ $month = 1;
   }
   function grafico02() {
       var data = google.visualization.arrayToDataTable([
-        ['', '1º Cachê em R$', 'Gratuito em R$', 'Premium em R$', 'Vendas em R$', 'Abatimento de Cachês em R$', {role: 'style'}],
+        ['', '1Âº CachÃª em R$', 'Gratuito em R$', 'Premium em R$', 'Vendas em R$', 'Abatimento de CachÃªs em R$', {role: 'style'}],
 		['Jan',  <?php echo $primeiros12016;?>, <?php echo $gratuitos12016;?>, <?php echo $pago12016;?>, <?php echo $vendas12016;?>, <?php echo $abatimento12016;?>, ''],
 		['Fev',  <?php echo $primeiros22016;?>, <?php echo $gratuitos22016;?>, <?php echo $pago22016;?>, <?php echo $vendas22016;?>, <?php echo $abatimento22016;?>, ''],
 		['Mar',  <?php echo $primeiros32016;?>, <?php echo $gratuitos32016;?>, <?php echo $pago32016;?>, <?php echo $vendas32016;?>, <?php echo $abatimento32016;?>, ''],
@@ -283,7 +283,7 @@ $month = 1;
       ]);
 
       var options = {
-        title: 'Análise da Origem da Receita Líquida',
+        title: 'AnÃ¡lise da Origem da Receita LÃ­quida',
         chartArea: {width: '50%'},
         isStacked: true,
         // hAxis: {
@@ -306,9 +306,9 @@ $month = 1;
     }
     function grafico03() {
       var data = google.visualization.arrayToDataTable([
-        ["Operação", "Valores em R$", { role: "style" }],
+        ["OperaÃ§Ã£o", "Valores em R$", { role: "style" }],
         ["Bruto Recebido", <?php echo $recebido;?>, "#4285f4"],
-        ["Cachês Pagos", <?php echo $caches_pagos;?>, "#872bb7"],
+        ["CachÃªs Pagos", <?php echo $caches_pagos;?>, "#872bb7"],
         ["Despesas Pagas", <?php echo $despesas;?>, "#db4437"],
         ["Saldo", <?php echo $saldo;?>, "#f4b400"]
       ]);
@@ -322,7 +322,7 @@ $month = 1;
                        2]);
 
       var options = {
-        title: "Fluxo de Caixa do Mês",
+        title: "Fluxo de Caixa do MÃªs",
         width: 500,
         height: 350,
         bar: {groupWidth: "95%"},
@@ -331,37 +331,7 @@ $month = 1;
       var chart = new google.visualization.ColumnChart(document.getElementById("grafico-03"));
       chart.draw(view, options);
   }
-  // function grafico04() {
-  //       var data = google.visualization.arrayToDataTable([
-	 //      ['Mês', 'Recebido', 'Previsto', 'Atrasado'],
-	 //      ['Jan', <?php echo $pg_recebido12016;?>, <?php echo $previsto12016;?>, <?php echo $atrasado12016;?>],
-	 //      ['Fev', <?php echo $pg_recebido22016;?>, <?php echo $previsto22016;?>, <?php echo $atrasado22016;?>],
-	 //      ['Mar', <?php echo $pg_recebido32016;?>, <?php echo $previsto32016;?>, <?php echo $atrasado32016;?>],
-	 //      ['Abr', <?php echo $pg_recebido42016;?>, <?php echo $previsto42016;?>, <?php echo $atrasado42016;?>],
-	 //      ['Mai', <?php echo $pg_recebido52016;?>, <?php echo $previsto52016;?>, <?php echo $atrasado52016;?>],
-	 //      ['Jun', <?php echo $pg_recebido62016;?>, <?php echo $previsto62016;?>, <?php echo $atrasado62016;?>],
-	 //      ['Jul', <?php echo $pg_recebido72016;?>, <?php echo $previsto72016;?>, <?php echo $atrasado72016;?>],
-	 //      ['Ago', <?php echo $pg_recebido82016;?>, <?php echo $previsto82016;?>, <?php echo $atrasado82016;?>],
-	 //      ['Set', <?php echo $pg_recebido92016;?>, <?php echo $previsto92016;?>, <?php echo $atrasado92016;?>],
-	 //      ['Out', <?php echo $pg_recebido102016;?>, <?php echo $previsto102016;?>, <?php echo $atrasado102016;?>],
-	 //      ['Nov', <?php echo $pg_recebido112016;?>, <?php echo $previsto112016;?>, <?php echo $atrasado112016;?>],
-	 //      ['Dez', <?php echo $pg_recebido122016;?>, <?php echo $previsto122016;?>, <?php echo $atrasado122016;?>]
-  //       ]);
-
-  //       var options = {
-  //         chart: {
-  //           title: 'Pagamentos',
-  //           subtitle: 'Recebido, a Receber e Atrasado',
-  //         },
-  //         bars: 'vertical',
-  //         vAxis: {format: 'decimal'},
-  //         colors: ['#1b9e77', '#d95f02', '#7570b3']
-  //       };
-
-  //       var chart = new google.charts.Bar(document.getElementById('grafico-04'));
-	 //    chart.draw(data, options);
-
-  //     }
+  
     function grafico04() {
 
    //    var data = new google.visualization.DataTable();
@@ -369,11 +339,11 @@ $month = 1;
    //    data.addColumn('number', 'Bruto a receber');
    //    data.addColumn('number', 'Despesas pagas');
    //    data.addColumn('number', 'Despesas a pagar');
-	  // data.addColumn('number', 'Cachês Pagos');
-	  // data.addColumn('number', 'Cachês a pagar');
+	  // data.addColumn('number', 'CachÃªs Pagos');
+	  // data.addColumn('number', 'CachÃªs a pagar');
 	        // data.addRows([
 		var data = google.visualization.arrayToDataTable([
-		['', 'Cachês a pagar', 'Despesas a pagar', 'Bruto a receber', 'Cachês Pagos', 'Despesas pagas', 'Bruto Recebido'],
+		['', 'CachÃªs a pagar', 'Despesas a pagar', 'Bruto a receber', 'CachÃªs Pagos', 'Despesas pagas', 'Bruto Recebido'],
 		['Jan', <?php echo $caches_a_pagar12016;?>, <?php echo $despesas_a_pagar12016;?>, <?php echo $bruto_a_receber12016;?>, <?php echo $cache_pagos12016;?>, <?php echo $despesas_pagas12016;?>, <?php echo $bruto_recebido12016;?>],
 		['Fev', <?php echo $caches_a_pagar22016;?>, <?php echo $despesas_a_pagar22016;?>, <?php echo $bruto_a_receber22016;?>, <?php echo $cache_pagos22016;?>, <?php echo $despesas_pagas22016;?>, <?php echo $bruto_recebido22016;?>],
 		['Mar', <?php echo $caches_a_pagar32016;?>, <?php echo $despesas_a_pagar32016;?>, <?php echo $bruto_a_receber32016;?>, <?php echo $cache_pagos32016;?>, <?php echo $despesas_pagas32016;?>, <?php echo $bruto_recebido32016;?>],
@@ -390,7 +360,7 @@ $month = 1;
 
       var options = {
         chart: {
-          title: 'Análise do Fluxo de Caixa',
+          title: 'AnÃ¡lise do Fluxo de Caixa',
           subtitle: 'em 1000 Reais (R$)'
         },
 		colors: ['#f4e3fd', '#fae3e1', '#e3edfd', '#872bb7', '#db4437', '#4285f4'],

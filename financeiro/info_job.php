@@ -1,4 +1,4 @@
-<?php header("Content-type: text/html; charset=ISO-8859-15");
+<?php header('Content-Type: text/html; charset=utf-8');
 session_start();
 	$data_job = $_SESSION['data_job'];
 	$produzido_por = $_SESSION['produzido_por'];
@@ -23,7 +23,7 @@ session_start();
 echo "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='pt-BR'>
 <head>
-<meta http-equiv='Content-type' content='text/html; charset=ISO-8859-15' />
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />
 <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:300,400' />
 <style type='text/css'>
 h1 { font-family: 'Roboto', sans-serif; font-weight: 400; }
@@ -56,15 +56,15 @@ th, td {
     <td align='left'>$data_job</td>
   </tr>
   <tr>
-    <th scope='row' align='right'>Mídia:</th>
+    <th scope='row' align='right'>MÃ­dia:</th>
     <td align='left'>$midia</td>
   </tr>
   <tr>
-    <th scope='row' align='right'>Praça:</th>
+    <th scope='row' align='right'>PraÃ§a:</th>
     <td align='left'>$praca</td>
   </tr>
   <tr>
-    <th scope='row' align='right'>Período:</th>
+    <th scope='row' align='right'>PerÃ­odo:</th>
     <td align='left'>$periodo $periodo_tipo</td>
   </tr>
   <tr>
@@ -76,19 +76,19 @@ th, td {
     <td align='left'>$n_participantes</td>
   </tr>
   <tr>
-    <th scope='row' align='right'>Previsão de Pgto.:</th>
+    <th scope='row' align='right'>PrevisÃ£o de Pgto.:</th>
     <td align='left'>$previsao_pagamento dias</td>
   </tr>
   <tr>
     <th scope='row' align='right'>Emitiu Nota?</th>";
 	if ($emitiu_nota == 0){
-		echo "<td align='left'>Não</td>
+		echo "<td align='left'>NÃ£o</td>
 			</tr>";
 	} elseif ($emitiu_nota == 1){
 		echo "<td align='left'>Sim</td>
 			</tr>
 		    <tr>
-		      <th scope='row' align='right'>Nº da Nota:</th>
+		      <th scope='row' align='right'>NÂº da Nota:</th>
 		      <td align='left'>$n_nota_fiscal</td>
 		    </tr>
 		    <tr>
@@ -99,7 +99,7 @@ th, td {
   <tr>
     <th scope='row' align='right'>Recebido?</th>";
 	if ($status_recebimento == 0){
-		echo "<td align='left'>Não</td>
+		echo "<td align='left'>NÃ£o</td>
 			</tr>";
 	} elseif ($status_recebimento == 1){
 		echo "<td align='left'>Sim</td>
