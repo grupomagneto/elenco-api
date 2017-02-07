@@ -47,7 +47,7 @@ $(document).ready(function(){
 	<h1>Transferências</h1>
 <?php
 	$hoje = date('d-m-Y', time());
-	$result = mysqli_query($link, "SELECT id, id_elenco_financeiro, status_pagamento, request_timestamp, bank_number, bank_name, bank_agency, bank_account, cpf, full_name, from_account, produzido_por, cliente_job, campanha, SUM(cache_liquido) AS valor FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' GROUP BY id_elenco_financeiro");
+	$result = mysqli_query($link, "SELECT id, nome, email, id_elenco_financeiro, status_pagamento, request_timestamp, bank_number, bank_name, bank_agency, bank_account, cpf, full_name, from_account, produzido_por, cliente_job, campanha, SUM(cache_liquido) AS valor FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' GROUP BY id_elenco_financeiro");
 ?>
 	<table id='resultado' class='compact nowrap stripe hover row-border order-column' cellspacing='0' width='100%'>
 		<thead>
@@ -73,10 +73,13 @@ $(document).ready(function(){
 		$request_timestamp = date('d-m-Y', strtotime($row['request_timestamp']));
 		$bank_number = $row['bank_number'];
 		$bank_name = $row['bank_name'];
+		$bank = $bank_number." - ".$bank_name;
 		$bank_agency = $row['bank_agency'];
 		$bank_account = $row['bank_account'];
 		$cpf = $row['cpf'];
 		$full_name = $row['full_name'];
+		$nome = $row['nome'];
+		$email = $row['email'];
 		$taxa = 10;
 		$from_account = "13.001.386-8";
 		$valor = $row['valor'] - $taxa;
@@ -92,15 +95,22 @@ echo "<form id='transferencia".$id."' method='post' action='action_transferencia
 					    echo "<div id='alerta'><strong>$request_timestamp</strong></div>";
 					}
 echo "				</td>";
-echo "     			<td>".$bank_number." - ".$bank_name."</td>";
-echo "     			<td>".$bank_agency."</td>";
-echo "     			<td>".$bank_account."</td>";
-echo "     			<td>".$cpf."</td>";
-echo "     			<td>".$full_name."</td>";
+echo "     			<td>$bank<input type='hidden' name='bank' value='$bank' /></td>";
+echo "     			<td>$bank_agency<input type='hidden' name='bank_agency' value='$bank_agency' /></td>";
+echo "     			<td>$bank_account<input type='hidden' name='bank_account' value='$bank_account' /></td>";
+echo "     			<td>$cpf<input type='hidden' name='cpf' value='$cpf' /></td>";
+echo "     			<td>$full_name<input type='hidden' name='full_name' value='$full_name' /></td>";
 // echo "     			<td>".$job."</td>";
-echo "     			<td>R$ ".$valor."</td>";
-echo "     			<td>".$from_account."<input type='hidden' name='from_account' value='$from_account' /></td>";
-echo "     			<td><button type='submit'><input type='hidden' name='id_elenco' value='$id' />Transferir</button></form></td>";
+echo "     			<td>R$ $valor<input type='hidden' name='valor' value='$valor' /></td>";
+echo "     			<td>$from_account<input type='hidden' name='from_account' value='$from_account' /></td>";
+echo "
+<td>
+<button type='submit'>
+<input type='hidden' name='id_elenco' value='$id' />
+<input type='hidden' name='email' value='$email' />
+<input type='hidden' name='nome' value='$nome' />
+Transferir</button>
+</form></td>";
 echo " 			</tr>";
 }
 $result2 = mysqli_query($link, "SELECT SUM(cache_liquido) AS total FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
