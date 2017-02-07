@@ -45,7 +45,7 @@ if (empty($_SESSION[$id])) {
     <body>
     <p>Oi $nome,</p>
     <p>Só pra avisar que seu dinheiro está a caminho e deve chegar na sua conta até amanhã. :)</p>
-    <p>Para seu controle, pagamos os cachês relativos aos trabalhos:</p>
+    <p>Para seu controle, pagamos o(s) cachê(s) relativo(s) ao(s) trabalho(s):</p>
     <strong><ul>$lista</ul></strong>
     <p>E a transferência no valor total de R$ $valor (a soma dos cachês menos R$ $taxa,00 de taxa de transferência) foi feita para a seguinte conta cadastrada:</p>
     <strong><ul>
