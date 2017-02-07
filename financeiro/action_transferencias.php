@@ -3,6 +3,7 @@ include('conecta.php');
 date_default_timezone_set('America/Sao_Paulo');
 $id = $_POST['id_elenco'];
 $from_account = $_POST['from_account'];
+// echo $id;
 $hoje = date('Y-m-d', time());
 $agora = date('Y-m-d h:i:s', time());
 $result = mysqli_query($link, "SELECT * FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro='$id'");
@@ -17,8 +18,9 @@ while ($row = mysqli_fetch_array($result)) {
   if ($desconto > 0) {
     $sql .= ",abatimento_cache='$desconto',data_abatimento='$hoje',produto_abatimento='$produto_abatimento'";
   }
-  $sql .= "WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro='$id'";
+  $sql .= " WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro='$id'";
   mysqli_query($link, $sql);
+  // echo $sql;
   $desconto = 0;
 }
 mysqli_close($link);

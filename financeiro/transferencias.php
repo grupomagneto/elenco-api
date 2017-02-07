@@ -58,7 +58,7 @@ $(document).ready(function(){
 				<th>Conta</th>
 				<th>CPF</th>
 				<th>Favorecido</th>
-				<th>Job</th>
+				<!-- <th>Job</th> -->
 				<th>Valor</th>
 				<th>Conta Remessa</th>
 				<th>Operação</th>
@@ -67,8 +67,8 @@ $(document).ready(function(){
 		<tbody>
 <?php
 	while ($row = mysqli_fetch_array($result)) {
-		$id = $row['id'];
-		$job = $row['produzido_por']." - ".$row['cliente_job']." - ".$row['campanha'];
+		$id = $row['id_elenco_financeiro'];
+		// $job = $row['produzido_por']." - ".$row['cliente_job']." - ".$row['campanha'];
 		$status_pagamento = $row['status_pagamento'];
 		$request_timestamp = date('d-m-Y', strtotime($row['request_timestamp']));
 		$bank_number = $row['bank_number'];
@@ -81,9 +81,9 @@ $(document).ready(function(){
 		$from_account = "13.001.386-8";
 		$valor = $row['valor'] - $taxa;
 		$valor = number_format($valor,2,",",".");
-		echo "<form id='transferencia".$id."' method='post' action='action_transferencias.php'>";
 echo " 			<tr>";
 echo "     			<td>";
+echo "<form id='transferencia".$id."' method='post' action='action_transferencias.php'>";
 					if  ($hoje < date('d-m-Y', strtotime($request_timestamp."+1 DAY"))) {
 					    echo "<div id='ok'><strong>$request_timestamp</strong></div>";
 					} elseif ($hoje < date('d-m-Y', strtotime($request_timestamp."+2 DAYS"))) {
@@ -97,10 +97,10 @@ echo "     			<td>".$bank_agency."</td>";
 echo "     			<td>".$bank_account."</td>";
 echo "     			<td>".$cpf."</td>";
 echo "     			<td>".$full_name."</td>";
-echo "     			<td>".$job."</td>";
+// echo "     			<td>".$job."</td>";
 echo "     			<td>R$ ".$valor."</td>";
-echo "     			<td>".$from_account."<input type='hidden' name='from_account' value='$from_account'></td>";
-echo "     			<td><input type='submit' name='id_elenco' id='transferencia".$id."' value='$id' />Transferir</form></td>";
+echo "     			<td>".$from_account."<input type='hidden' name='from_account' value='$from_account' /></td>";
+echo "     			<td><button type='submit'><input type='hidden' name='id_elenco' value='$id' />Transferir</button></form></td>";
 echo " 			</tr>";
 }
 $result2 = mysqli_query($link, "SELECT SUM(cache_liquido) AS total FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
