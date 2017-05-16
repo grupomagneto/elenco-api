@@ -207,12 +207,17 @@ echo "				<script type='text/javascript'>
 					</script>";
 echo " 			</tr>";
 }
-$result2 = mysqli_query($link, "SELECT SUM(cache_liquido) AS total FROM financeiro WHERE status_pagamento=0 AND liberado=1 AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
+$urgente = mysqli_query($link, "SELECT SUM(cache_liquido) AS urgente FROM (SELECT nome, sobrenome, data_job, cache_liquido, id_elenco_financeiro AS id FROM financeiro WHERE tipo_entrada='cache' AND status_pagamento = 0 AND status_recebimento = 1 AND (liberado = 0 OR liberado IS NULL) AND nome IS NOT NULL AND YEAR(data_job) < YEAR(CURDATE())) T1 INNER JOIN (SELECT id_elenco id, tipo_cadastro_vigente, data_contrato_vigente FROM tb_elenco WHERE senha IS NOT NULL) T2 USING (id) ORDER BY data_job DESC");
+$row_urgente = mysqli_fetch_array($urgente);
+$urgente = $row_urgente['urgente'];
+$urgente_format = number_format($urgente,2,",",".");
+
+$result2 = mysqli_query($link, "SELECT SUM(cache_liquido) AS total FROM financeiro WHERE (status_pagamento=0 OR status_pagamento IS NULL) AND liberado=1 AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
 $row2 = mysqli_fetch_array($result2);
 $total = $row2['total'];
 $total_format = number_format($total,2,",",".");
 
-$result3 = mysqli_query($link, "SELECT SUM(cache_liquido) AS total2 FROM financeiro WHERE status_pagamento=0 AND status_recebimento=1 AND liberado<>1 AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
+$result3 = mysqli_query($link, "SELECT SUM(cache_liquido) AS total2 FROM financeiro WHERE (status_pagamento=0 OR status_pagamento IS NULL) AND status_recebimento=1 AND liberado<>1 AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
 $row3 = mysqli_fetch_array($result3);
 $total3 = $row3['total2'];
 $total_format3 = number_format($total3,2,",",".");
@@ -227,6 +232,16 @@ $total_format3 = number_format($total3,2,",",".");
 			<th></th>
  			<th></th>
  			<th><?php echo "R$: $total_format"; ?></th>
+ 			<th></th>
+		</tr><tr>
+			<th>Urgente a liberar</th>
+ 			<th></th>
+ 			<th></th>
+ 			<th></th>
+ 			<th></th>
+			<th></th>
+ 			<th></th>
+ 			<th><?php echo "R$: $urgente_format"; ?></th>
  			<th></th>
 		</tr>
 		<tr>

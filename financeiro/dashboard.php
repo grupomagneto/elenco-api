@@ -10,7 +10,8 @@ include("conecta.php");
 	$month = $start_month;
 while ($year <= $end_year) {
   	while ($month <= $end_month) {
-  		$sql_bruto = "SELECT SUM(cache_bruto) AS bruto FROM financeiro WHERE status_recebimento = '1' AND MONTH(data_recebimento) = '$month' AND YEAR(data_recebimento) = '$year'";
+  		// $sql_bruto = "SELECT SUM(cache_bruto) AS bruto FROM financeiro WHERE status_recebimento = '1' AND MONTH(data_recebimento) = '$month' AND YEAR(data_recebimento) = '$year'";
+  		$sql_bruto = "SELECT SUM(cache_liquido) AS bruto FROM financeiro WHERE status_recebimento = '1' AND MONTH(data_recebimento) = '$month' AND YEAR(data_recebimento) = '$year'";
 		$sql_liquido = "SELECT SUM(cache_bruto) - SUM(cache_liquido) + SUM(valor_venda) AS liquido FROM financeiro WHERE MONTH(data_job) = '$month' AND YEAR(data_job) = '$year' OR MONTH(data_venda) = '$month' AND YEAR(data_venda) = '$year'";
 		$sql_despesas = "SELECT SUM(valor_despesa) AS despesas FROM financeiro WHERE YEAR(data_despesa) = '$year' AND MONTH(data_despesa) = '$month'";
 		$result = mysqli_query($link, $sql_liquido);

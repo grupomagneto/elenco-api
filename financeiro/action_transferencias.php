@@ -80,7 +80,7 @@ while ($row = mysqli_fetch_array($result)) {
   if ($desconto > 0) {
     $sql .= ",abatimento_cache='$desconto',data_abatimento='$hoje',produto_abatimento='$produto_abatimento'";
   }
-  $sql .= " WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro='$id'";
+  $sql .= " WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id='$id_cache'";
   mysqli_query($link, $sql);
   $desconto = 0;
 }

@@ -43,7 +43,7 @@ $(document).ready(function(){
 	<h1>Jobs</h1>
 <?php
 	$hoje = date('Y-m-d', time());
-	$result = mysqli_query($link, "SELECT nome, data_job, campanha, cliente_job, produzido_por, status_recebimento, data_recebimento, id, SUM(cache_bruto) AS valor, COUNT(nome) AS quantidade, emitiu_nota, n_nota_fiscal, data_nota, SUM(cache_bruto) - SUM(cache_liquido) AS lucro FROM financeiro WHERE tipo_entrada = 'cache' GROUP BY data_job, campanha, cliente_job, produzido_por ORDER BY data_job DESC");
+	$result = mysqli_query($link, "SELECT data_job, campanha, cliente_job, produzido_por, status_recebimento, data_recebimento, id, SUM(cache_bruto) AS valor, COUNT(nome) AS quantidade, emitiu_nota, n_nota_fiscal, data_nota, SUM(cache_bruto) - SUM(cache_liquido) AS lucro FROM financeiro WHERE tipo_entrada = 'cache' AND (status_recebimento = 0 OR status_recebimento IS NULL) GROUP BY data_job, campanha, cliente_job, produzido_por UNION ALL SELECT data_job, campanha, cliente_job, produzido_por, status_recebimento, data_recebimento, id, SUM(cache_bruto) AS valor, COUNT(nome) AS quantidade, emitiu_nota, n_nota_fiscal, data_nota, SUM(cache_bruto) - SUM(cache_liquido) AS lucro FROM financeiro WHERE tipo_entrada = 'cache'  AND status_recebimento = 1 GROUP BY data_job, campanha, cliente_job, produzido_por ORDER BY data_job DESC");
 		if (!$result) {
 		 die("Database query failed: " . mysqli_error());
 }
