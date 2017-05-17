@@ -47,7 +47,7 @@ $(document).ready(function(){
 	<h1>Transferências</h1>
 <?php
 	$hoje = date('d-m-Y', time());
-	$result = mysqli_query($link, "SELECT id, nome, email, id_elenco_financeiro, status_pagamento, request_timestamp, bank_number, bank_name, bank_agency, bank_account, cpf, full_name, from_account, produzido_por, cliente_job, campanha, SUM(cache_liquido) AS valor FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' GROUP BY id_elenco_financeiro");
+	$result = mysqli_query($link, "SELECT id, nome, email, id_elenco_financeiro, status_pagamento, request_timestamp, bank_number, bank_name, bank_agency, bank_account, cpf, full_name, from_account, produzido_por, cliente_job, campanha, (SUM(cache_liquido) - ifnull(SUM(abatimento_cache), 0) - ifnull(SUM(valor_pago), 0)) AS valor FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' GROUP BY id_elenco_financeiro");
 ?>
 	<table id='resultado' class='compact nowrap stripe hover row-border order-column' cellspacing='0' width='100%'>
 		<thead>
@@ -113,7 +113,7 @@ Transferir</button>
 </form></td>";
 echo " 			</tr>";
 }
-$result2 = mysqli_query($link, "SELECT SUM(cache_liquido) AS total FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
+$result2 = mysqli_query($link, "SELECT (SUM(cache_liquido) - ifnull(SUM(abatimento_cache), 0) - ifnull(SUM(valor_pago), 0)) AS total FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' AND id_elenco_financeiro IS NOT NULL AND tipo_entrada = 'cache'");
 $row2 = mysqli_fetch_array($result2);
 $total = $row2['total'];
 $total_format = number_format($total,2,",",".");
