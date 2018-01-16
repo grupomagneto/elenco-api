@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!session_id()) {
+  session_start();
+}
 	$data_job = $_SESSION['data_job'];
 	$produzido_por = $_SESSION['produzido_por'];
 	$cliente_job = $_SESSION['cliente_job'];

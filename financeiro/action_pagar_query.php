@@ -11,13 +11,13 @@ if (!$sacar && !$utilizar) {
 	echo "Escolha uma das opção: Utilizar ou Sacar.";
 } else {
 	$data = $_GET['data_pagamento'];
-	$sql = "SELECT id_elenco_financeiro, nome, sobrenome, cache_liquido, abatimento_cache, valor_pago FROM financeiro WHERE id = '$id_cache_01'";
+	$sql = "SELECT id_elenco_financeiro, nome, sobrenome, cache_liquido, abatimento_cache, valor_cheque FROM financeiro WHERE id = '$id_cache_01'";
 		$result = mysqli_query($link, $sql);
 		$row = mysqli_fetch_array($result);
 		$id_elenco = $row['id_elenco_financeiro'];
 		$cache_liquido = $row['cache_liquido'];
 		$abatimento_cache_existente = $row['abatimento_cache'];
-		$valor_pago_existente = $row['valor_pago'];
+		$valor_cheque_existente = $row['valor_cheque'];
 		$nome = $row['nome'];
 		$sobrenome = $row['sobrenome'];
 		if (!empty($_GET['saldo_utilizado'])) {
@@ -37,18 +37,18 @@ if (!$sacar && !$utilizar) {
 			$result3 = mysqli_query($link, $sql_n_caches);
 			$row3 = mysqli_fetch_array($result3);
 			$n_total_caches = $row3['n_caches'];
-		$sql_outros_caches = "SELECT id, cache_liquido, abatimento_cache, valor_pago FROM financeiro WHERE tipo_entrada = 'Cache' AND status_pagamento = 0 AND id_elenco_financeiro = '$id_elenco' AND id <> '$id_cache_01' ORDER BY cache_liquido DESC";
+		$sql_outros_caches = "SELECT id, cache_liquido, abatimento_cache, valor_cheque FROM financeiro WHERE tipo_entrada = 'Cache' AND status_pagamento = 0 AND id_elenco_financeiro = '$id_elenco' AND id <> '$id_cache_01' ORDER BY cache_liquido DESC";
 			$result2 = mysqli_query($link, $sql_outros_caches);
 			$n = 1;
 			while ($row2 = mysqli_fetch_array($result2)) {
 				${'id_novo_cache_'.$n} = $row2['id'];
 				${'cache_liquido_'.$n} = $row2['cache_liquido'];
 				${'abatimento_cache_'.$n} = $row2['abatimento_cache'];
-				${'valor_pago_'.$n} = $row2['valor_pago'];
+				${'valor_cheque_'.$n} = $row2['valor_cheque'];
 				$n++;
 			}
 
-	$sql2 = "SELECT SUM(cache_liquido) AS saldo_a_receber, SUM(abatimento_cache) AS abatimento, SUM(valor_pago) AS cheque FROM financeiro WHERE status_pagamento = 0 AND id_elenco_financeiro = '$id_elenco'";
+	$sql2 = "SELECT SUM(cache_liquido) AS saldo_a_receber, SUM(abatimento_cache) AS abatimento, SUM(valor_cheque) AS cheque FROM financeiro WHERE status_pagamento = 0 AND id_elenco_financeiro = '$id_elenco'";
 		$result2 = mysqli_query($link, $sql2);
 		$row2 = mysqli_fetch_array($result2);
 		if ($row2['abatimento'] == NULL || $row2['abatimento'] == '' || $row2['abatimento'] == '0') {
@@ -64,12 +64,12 @@ if (!$sacar && !$utilizar) {
 			$saldo_a_receber = $row2['saldo_a_receber'] - $abatimento_total - $cheque_total;
 			$saldo_a_receber_format = number_format($saldo_a_receber,2,",",".");
 
-	if ($cache_liquido < $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_pago_existente) {
-		if ($saldo_a_receber < $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_pago_existente) {
+	if ($cache_liquido < $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_cheque_existente) {
+		if ($saldo_a_receber < $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_cheque_existente) {
 			echo "Saldo insuficiente.";
 		}
 		// Vai utilizar outros cachês
-		elseif ($saldo_a_receber >= $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_pago_existente) {
+		elseif ($saldo_a_receber >= $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_cheque_existente) {
 			if ($utilizar == 'true'){
 				$operacao = $_GET['operacao'];
 				if (!$operacao) {
@@ -135,16 +135,16 @@ if (!$sacar && !$utilizar) {
 				if (!$conta) {
 					echo "Por favor, selecione uma Conta Bancária para o Cheque.";
 				}
-				$sql_sacar = "UPDATE financeiro SET valor_pago = '$saldo_sacado', data_pagamento = '$data', n_cheque = '$n_cheque', conta_cheque = '$conta' WHERE id = '$id_cache_01'";
+				$sql_sacar = "UPDATE financeiro SET valor_cheque = '$saldo_sacado', data_pagamento = '$data', n_cheque = '$n_cheque', conta_cheque = '$conta' WHERE id = '$id_cache_01'";
 				mysqli_query($link, $sql_sacar);
 			}
-			if ($cache_liquido == ($saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_pago_existente)) {
+			if ($cache_liquido == ($saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_cheque_existente)) {
 				$sql_quitar_01 = "UPDATE financeiro SET status_pagamento = '1' WHERE id = '$id_cache_01'";
 				mysqli_query($link, $sql_quitar_01);
 			}
 		}
 	// Utiliza apenas o cachê selecionado
-	} elseif ($cache_liquido >= $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_pago_existente) {
+	} elseif ($cache_liquido >= $saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_cheque_existente) {
 		if (isset($utilizar) && $utilizar == 'true'){
 			$operacao = $_GET['operacao'];
 			if (!$operacao) {
@@ -205,10 +205,10 @@ if (!$sacar && !$utilizar) {
 			if (!$conta) {
 				echo "Por favor, selecione uma Conta Bancária para o Cheque.";
 			}
-			$sql_sacar = "UPDATE financeiro SET valor_pago = '$saldo_sacado', data_pagamento = '$data', n_cheque = '$n_cheque', conta_cheque = '$conta' WHERE id = '$id_cache_01'";
+			$sql_sacar = "UPDATE financeiro SET valor_cheque = '$saldo_sacado', data_pagamento = '$data', n_cheque = '$n_cheque', conta_cheque = '$conta' WHERE id = '$id_cache_01'";
 			mysqli_query($link, $sql_sacar);
 		}
-		if ($cache_liquido == ($saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_pago_existente)) {
+		if ($cache_liquido == ($saldo_utilizado + $saldo_sacado + $abatimento_cache_existente + $valor_cheque_existente)) {
 			$sql_quitar_01 = "UPDATE financeiro SET status_pagamento = '1' WHERE id = '$id_cache_01'";
 			mysqli_query($link, $sql_quitar_01);
 		}

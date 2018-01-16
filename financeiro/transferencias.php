@@ -37,7 +37,7 @@ include("conecta.php");
 <script type='text/javascript'>
 $(document).ready(function(){
     $('#resultado').DataTable( {
-		"aaSorting": [[4,'asc'], [0,'asc']]
+		"aaSorting": [[0,'asc'], [5,'asc']]
     } );
 } );
 </script>
@@ -47,7 +47,7 @@ $(document).ready(function(){
 	<h1>Transferências</h1>
 <?php
 	$hoje = date('d-m-Y', time());
-	$result = mysqli_query($link, "SELECT id, nome, email, id_elenco_financeiro, status_pagamento, request_timestamp, bank_number, bank_name, bank_agency, bank_account, cpf, full_name, from_account, produzido_por, cliente_job, campanha, (SUM(cache_liquido) - ifnull(SUM(abatimento_cache), 0) - ifnull(SUM(valor_pago), 0)) AS valor FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' GROUP BY id_elenco_financeiro");
+	$result = mysqli_query($link, "SELECT id, nome, email, id_elenco_financeiro, status_pagamento, request_timestamp, bank_number, bank_name, bank_agency, bank_account, cpf, full_name, from_account, produzido_por, cliente_job, campanha, (SUM(cache_liquido) - ifnull(SUM(abatimento_cache), 0) - ifnull(SUM(valor_pago), 0)) AS valor FROM financeiro WHERE request_timestamp IS NOT NULL AND status_pagamento<>'1' GROUP BY id_elenco_financeiro ORDER BY request_timestamp ASC");
 ?>
 	<table id='resultado' class='compact nowrap stripe hover row-border order-column' cellspacing='0' width='100%'>
 		<thead>
@@ -87,11 +87,11 @@ $(document).ready(function(){
 echo " 			<tr>";
 echo "     			<td>";
 echo "<form id='transferencia".$id."' method='post' action='action_transferencias.php'>";
-					if  ($hoje < date('d-m-Y', strtotime($request_timestamp."+1 DAY"))) {
+					if  ($hoje < date('d-m-Y', strtotime($request_timestamp."+1 WEEKDAY"))) {
 					    echo "<div id='ok'><strong>$request_timestamp</strong></div>";
-					} elseif ($hoje < date('d-m-Y', strtotime($request_timestamp."+2 DAYS"))) {
+					} elseif ($hoje < date('d-m-Y', strtotime($request_timestamp."+2 WEEKDAYS"))) {
 					    echo "<div id='no_prazo'><strong>$request_timestamp</strong></div>";
-					} elseif ($hoje < date('d-m-Y', strtotime($request_timestamp."+3 DAYS"))) {
+					} elseif ($hoje < date('d-m-Y', strtotime($request_timestamp."+3 WEEKDAYS")) || $hoje >= date('d-m-Y', strtotime($request_timestamp."+3 WEEKDAYS"))) {
 					    echo "<div id='alerta'><strong>$request_timestamp</strong></div>";
 					}
 echo "				</td>";
