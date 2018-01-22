@@ -1,0 +1,27 @@
+body{ margin:0; padding:0; background:url(/admin/img/bg.gif) repeat-x; background-color:#2c3135; font:11px arial; color:#707070;}
+
+img{ border:none;}
+a{ outline:none;}
+
+form{ padding:0; margin:0;}
+input{ outline:none;}
+.ipth{ width:60px; border:1px solid #aab0b6;}
+.ipt_gravar{background:none; border:none; color:#c3161c;}
+.tit{ margin-left:10px;}
+.cad_novo{ margin-right:10px;}
+
+.home_pad{padding:10px;}
+
+.font_br{ color:#FFF; font-weight:bold; font-size:12px;}
+.fbr{ color:#FFF;}
+
+.coluna_a{width:240px; float:left; margin-left:10px; margin-top:40px;}
+.coluna_b{width:730px; float:left;}
+
+.tab_cor  td{ border-bottom:1px solid #e2e2e2; padding-left:10px;}
+
+td.pln{padding-left:0;}
+
+.tdc{border-bottom:1px solid #dadada; border-top:1px solid #dadada; background-color:#f5f5f5;}
+
+	

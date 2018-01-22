@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="../css/admin_estilo.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/admin.css"/>
+<script type="text/javascript" src="../js/script.js"></script>
+
+
+<link rel="stylesheet" href="../box/jquery.modal.css" media="screen,projection" type="text/css" />
+<script type="text/javascript" src="../box/jquery.js"></script>
+<script type="text/javascript" src="../box/modal.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+
+<table style="margin-top:20px;" align="center" width="990" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td rowspan="2"><img src="../img/logo.gif" width="293" height="73" alt=""></td>
+		<td align="right"><a href="/admin/logoff.php"><img src="../img/bt_sair.gif" alt=""></a></td>
+	</tr>
+	<tr>
+		<td height="42" width="697" valign="bottom">
+        <a href="/admin/index.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('home','','../img/mn_home_over.gif',1)"><img src="../img/mn_home.gif" name="home" width="69" height="42" border="0" id="home" /></a><a href="/admin/elenco/index.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('elenco','','../img/mn_elenco_over.gif',1)"><img src="../img/mn_elenco.gif" name="elenco" width="77" height="42" border="0" id="elenco" /></a><a href="/admin/tabelas_tradicionais/index.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('tabs','','../img/mn_tabs_over.gif',1)"><img src="../img/mn_tabs.gif" name="tabs" width="81" height="42" border="0" id="tabs" /></a><a href="/admin/elenco/destaques_home.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('dest','','../img/mn_destaque_over.gif',1)"><img src="../img/mn_destaque.gif" name="dest" width="125" height="42" border="0" id="dest" /></a><a href="/admin/elenco/cursos.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('cursos','','../img/mn_cursos_over.gif',1)"><img src="../img/mn_cursos.gif" name="cursos" width="80" height="42" border="0" id="cursos" /></a><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('agenda','','../img/mn_agenda_over.gif',1)"><img src="../img/mn_agenda.gif" name="agenda" width="81" height="42" border="0" id="agenda" /></a><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('msn','','../img/mn_mensagen_over.gif',1)"><img src="../img/mn_mensagem.gif" name="msn" width="89" height="42" border="0" id="msn" /></a><?
+	if($_SESSION['id_tipo_admin'] == 1){
+	?><a href="/admin/usuario/index.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('usuarios','','../img/mn_usuarios_over.gif',1)"><img src="../img/mn_usuarios.gif" name="usuarios" width="88" height="42" border="0" id="usuarios" /></a><?
+	}
+	else{
+		echo "&nbsp;";
+	}
+	?></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="../img/menu_top.gif" width="990" height="18" alt=""></td>
+	</tr>
+	<tr>
+	  <td colspan="2" bgcolor="#FFFFFF">
+      
+      
+      
+     <img src="../img/tit_agenda.gif" width="140" height="68" class="tit" /><br /><br />
+
+
+<!-- coluna A com calendario -->
+<div class="coluna_a">
+<table width="155" border="0" cellspacing="0">
+  <tr bgcolor="#b3141a">
+    <td width="25"><img src="../img/seta_esq.gif" width="25" height="22" /></td>
+    <td  align="center" class="font_br">AGOSTO</td>
+    <td width="25" align="right"><img src="../img/seta_dir.gif" width="25" height="22" /></td>
+  </tr>
+  <tr>
+    <td colspan="3">calendario vai aqui nesta célula</td>
+    </tr>
+</table>
+</div>
+<!-- coluna A com calendario fim -->
+
+<!-- coluna B com dados -->
+<div class="coluna_b">
+
+<table width="100%" border="0" cellspacing="0">
+  <tr>
+    <td colspan="3" height="40" align="right"><img src="../img/bt_cancelar_dia.gif" width="160" height="33" /> <a href="imprimir_agenda_dia.html" target="_blank"><img src="../img/bt_imprimir_dia.gif" width="160" height="33" class="tit" /></a></td>
+    </tr>
+  <tr bgcolor="#b3141a">
+    <td width="25"><img src="../img/seta_esq.gif" width="25" height="22" /></td>
+    <td  align="center" class="font_br">QUARTA, 17 DE AGOSTO de 2009</td>
+    <td width="25" align="right"><img src="../img/seta_dir.gif" width="25" height="22" /></td>
+  </tr>
+</table>
+
+
+<table width="100%" border="0" cellpadding="3" cellspacing="0" class="tab_cor">
+  <tr bgcolor="#c3161c">
+    <td width="12%" class="font_br">HORÁRIO</td>
+    <td width="52%" class="font_br">NOME ARTÍSTICO</td>
+    <td width="36%" class="font_br">AÇÕES</td>
+  </tr>
+  <tr>
+    <td>9:00</td>
+    <td>Adriano Cunha Moura</td>
+    <td><a href="#">excluir</a> | <a href="#">remarcar</a> | <a href="#">editar</a> | <a href="#">imprimir contrato</a></td>
+  </tr>
+  <tr bgcolor="#f5f5f5">
+    <td>9:15</td>
+    <td>Adriel Carlo Batista Cardoso</td>
+    <td><a href="#">excluir</a> | <a href="#">remarcar</a> | <a href="#">editar</a> | <a href="#">imprimir contrato</a></td>
+  </tr>
+  <tr>
+    <td>9:30</td>
+    <td><a href="#" onclick="$('.modal').modalToggle(); return false;">Horário livre - clique para agendar horário</a></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr bgcolor="#f5f5f5">
+    <td>9:45</td>
+    <td>Alana Teixeira Ferrigno</td>
+    <td><a href="#">excluir</a> | <a href="#">remarcar</a> | <a href="#">editar</a> | <a href="#">imprimir contrato</a></td>
+  </tr>
+  <tr>
+    <td>10:00</td>
+    <td>Alberto Fernandes Schlapfer</td>
+    <td><a href="#">excluir</a> | <a href="#">remarcar</a> | <a href="#">editar</a> | <a href="#">imprimir contrato</a></td>
+  </tr>
+</table>
+</div>
+<!-- coluna B com dados fim -->
+
+
+      <!-- lightbox solicitar orcamento -->
+<div class="modal mod_agendar">
+<a href="#" onclick="$('.modal').modalToggle(); return false;"><img src="../img/bt_fechar.gif" class="fechar_a"></a>
+ 
+    <div class="mod_agendar_txt">
+  <iframe width="720" height="330" frameborder="0" src="reagendar.html"></iframe>
+     </div>
+</div>
+<!-- fim lightbox solicitar orcamento -->
+
+      
+      
+      
+      
+      
+      
+      
+      </td>
+  </tr>
+	<tr>
+	  <td colspan="2"><img src="../img/menu_pe.gif" width="990" height="26"></td>
+  </tr>
+</table>
+
+
+</body>
+</html>

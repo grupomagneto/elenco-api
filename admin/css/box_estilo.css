@@ -1,0 +1,36 @@
+body{ margin:0; padding:0; font:11px arial; color:#707070;}
+
+img{ border:none;}
+a{ outline:none;}
+
+form{ padding:0; margin:0;}
+
+.tit{ margin-left:10px;}
+.cad_novo{ margin-right:10px;}
+
+.font_br{ color:#FFF; font-weight:bold; font-size:12px;}
+
+.coluna_a{width:240px; float:left;}
+.coluna_b{width:460px; float:left;}
+
+.tab_cor  td{ border-bottom:1px solid #e2e2e2; padding-left:10px;}
+
+a {text-decoration:none; color:#c3161c;}
+a:hover {text-decoration:underline;}
+
+.box{width:135px; height:220px; float:left; margin-right:25px;}
+.nada{margin-right:0px;}
+
+ul.tempo{list-style:none; padding:0; margin:0;border-top:1px solid #c1c5c8}
+ul.tempo li{padding:0; margin:0; width:132px; height:17px; border-bottom:1px solid #c1c5c8; padding-left:3px; padding-top:3px;}
+
+ul.tempo li.ocupado{ background:url(../img/bg_ocupado.gif); background-color:#e0e0e0;}
+ul.tempo li.selecionar{ background:url(../img/bg_selecionar.gif);}
+li.selecionar a{display:block; text-decoration:none; color:#707070;}
+ul.tempo li.selecionado{ background:url(../img/bg_selecionado.gif);}
+
+.lmp{ clear:both; margin:0; padding:0;}
+.btr{ float:right; margin-top:30px;}
+
+.nome{ font-size:20px; text-transform:uppercase;}
+

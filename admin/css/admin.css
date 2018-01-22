@@ -1,0 +1,14 @@
+/* CSS Document */
+
+	body, input, textarea, select { font-family: Trebuchet MS, Arial, Helvetica, sans-serif; font-size:11px; color:#666666; }
+
+	body, form { padding:8px; margin:8px; }
+
+	a {text-decoration:none; color:#c3161c;}
+
+	a:hover {text-decoration:underline;}
+	
+	.texto_pequeno { font-family: Trebuchet MS, Arial, Helvetica, sans-serif; font-size:9px; color:#666666; }
+	
+	a.branc{text-decoration:none; color:#FFFfff;}
+	a.branc:hover{text-decoration:underline;}
