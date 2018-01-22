@@ -2,7 +2,7 @@
 include('conecta.php');
 	$hoje = date('Y-m-d', time());
 	$id = $_GET['pagar'];
-	$sql = "SELECT * FROM (SELECT id id_cache, data_job, nome, sobrenome, id_elenco_financeiro id, campanha, cliente_job, produzido_por, status_recebimento, liberado, previsao_pagamento, status_pagamento, data_pagamento, data_recebimento, n_ligacoes, cache_liquido, valor_cheque, abatimento_cache FROM financeiro WHERE id = '$id') T1 INNER JOIN (SELECT id_elenco id, email, tipo_cadastro_vigente, data_contrato_vigente, tl_celular FROM tb_elenco comum) T2 USING (id) ORDER BY data_job DESC";
+	$sql = "SELECT * FROM (SELECT id id_cache, data_job, nome, sobrenome, id_elenco_financeiro id, campanha, cliente_job, produzido_por, status_recebimento, liberado, previsao_pagamento, status_pagamento, data_pagamento, data_recebimento, n_ligacoes, cache_liquido, valor_pago, abatimento_cache FROM financeiro WHERE id = '$id') T1 INNER JOIN (SELECT id_elenco id, email, tipo_cadastro_vigente, data_contrato_vigente, tl_celular FROM tb_elenco comum) T2 USING (id) ORDER BY data_job DESC";
 	$result = mysqli_query($link, $sql);
 	$row = mysqli_fetch_array($result);
 	$id_elenco_financeiro = $row['id'];
@@ -30,11 +30,11 @@ include('conecta.php');
 		}
 		$cache_liquido = $row['cache_liquido'];
 		$abatimento_cache = $row['abatimento_cache'];
-		$valor_cheque = $row['valor_cheque'];
-		$saldo_cache = $cache_liquido - $abatimento_cache - $valor_cheque;
+		$valor_pago = $row['valor_pago'];
+		$saldo_cache = $cache_liquido - $abatimento_cache - $valor_pago;
 		$cache_liquido_format = number_format($cache_liquido,2,",",".");
 		$abatimento_cache_format = number_format($abatimento_cache,2,",",".");
-		$valor_cheque_format = number_format($valor_cheque,2,",",".");
+		$valor_pago_format = number_format($valor_pago,2,",",".");
 		$saldo_cache_format = number_format($saldo_cache,2,",",".");
 		$adicional = 45;
 		$previsao_pagamento = $row['previsao_pagamento'] + $adicional;
@@ -49,7 +49,7 @@ include('conecta.php');
 			$status_cache = "<font color='red'><strong>Indisponível para saque</strong></font>";
 			$saque = "disabled";
 		}
-		$sql2 = "SELECT SUM(cache_liquido) AS saldo_a_receber, SUM(abatimento_cache) AS abatimento, SUM(valor_cheque) AS cheque FROM financeiro WHERE status_pagamento = 0 AND id_elenco_financeiro = '$id_elenco_financeiro'";
+		$sql2 = "SELECT SUM(cache_liquido) AS saldo_a_receber, SUM(abatimento_cache) AS abatimento, SUM(valor_pago) AS cheque FROM financeiro WHERE status_pagamento = 0 AND id_elenco_financeiro = '$id_elenco_financeiro'";
 		$result2 = mysqli_query($link, $sql2);
 		$row2 = mysqli_fetch_array($result2);
 		if ($row2['abatimento'] == NULL || $row2['abatimento'] == '' || $row2['abatimento'] == '0') {
@@ -209,13 +209,13 @@ echo "<tr>
 	<td align='left'><div style='color: red;'>-R$ $abatimento_cache_format</div></td>
 </tr>";
 }
-if ($valor_cheque != NULL && $valor_cheque != '') {
+if ($valor_pago != NULL && $valor_pago != '') {
 echo "<tr>
 	<th scope='row' align='right'>Cheque Pago:&nbsp;</th>
-	<td align='left'><div style='color: red;'>-R$ $valor_cheque_format</div></td>
+	<td align='left'><div style='color: red;'>-R$ $valor_pago_format</div></td>
 </tr>";
 }
-if ($valor_cheque != NULL && $valor_cheque != '' || $abatimento_cache != NULL && $abatimento_cache != '') {
+if ($valor_pago != NULL && $valor_pago != '' || $abatimento_cache != NULL && $abatimento_cache != '') {
 echo "<tr>
 	<th scope='row' align='right'>Saldo:&nbsp;</th>
 	<td align='left'><font color='green'><strong>R$ $saldo_cache_format</strong></font></td>

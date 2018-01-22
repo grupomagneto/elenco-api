@@ -207,7 +207,7 @@ echo "				<script type='text/javascript'>
 					</script>";
 echo " 			</tr>";
 }
-$urgente = mysqli_query($link, "SELECT SUM(cache_liquido) AS urgente FROM (SELECT nome, sobrenome, data_job, cache_liquido, id_elenco_financeiro AS id FROM financeiro WHERE tipo_entrada='cache' AND status_pagamento = 0 AND status_recebimento = 1 AND (liberado = 0 OR liberado IS NULL) AND nome IS NOT NULL AND YEAR(data_job) < YEAR(CURDATE())) T1 INNER JOIN (SELECT id_elenco id, tipo_cadastro_vigente, data_contrato_vigente FROM tb_elenco WHERE senha IS NOT NULL) T2 USING (id) ORDER BY data_job DESC");
+$urgente = mysqli_query($link, "SELECT SUM(cache_liquido) AS urgente FROM (SELECT nome, sobrenome, data_job, cache_liquido, id_elenco_financeiro AS id FROM financeiro WHERE tipo_entrada='cache' AND status_pagamento = 0 AND status_recebimento = 1 AND (liberado = 0 OR liberado IS NULL) AND nome IS NOT NULL AND YEAR(data_job) <= YEAR(CURDATE())) T1 INNER JOIN (SELECT id_elenco id, tipo_cadastro_vigente, data_contrato_vigente FROM tb_elenco WHERE senha IS NOT NULL) T2 USING (id) ORDER BY data_job DESC");
 $row_urgente = mysqli_fetch_array($urgente);
 $urgente = $row_urgente['urgente'];
 $urgente_format = number_format($urgente,2,",",".");

@@ -4,8 +4,8 @@ include("conecta.php");
 // Gráfico 01
 	$start_month = 1;
 	$end_month = 12;
-	$start_year = 2017;
-	$end_year = 2017;
+	$start_year = 2018;
+	$end_year = 2018;
 	$year = $start_year;
 	$month = $start_month;
 while ($year <= $end_year) {
@@ -48,8 +48,8 @@ while ($year <= $end_year) {
 // Gráfico 02
 	$start_mes = 1;
 	$end_mes = 12;
-	$start_ano = 2017;
-	$end_ano = 2017;
+	$start_ano = 2018;
+	$end_ano = 2018;
 	$ano = $start_ano;
 	$mes = $start_mes;
 
@@ -126,8 +126,8 @@ while ($ano <= $end_ano) {
 // Gráfico 04 (barras)
 // 	$start_mes = 1;
 // 	$end_mes = 12;
-// 	$start_ano = 2017;
-// 	$end_ano = 2017;
+// 	$start_ano = 2018;
+// 	$end_ano = 2018;
 // 	$ano = $start_ano;
 // 	$mes = $start_mes;
 // while ($ano <= $end_ano) {
@@ -162,8 +162,8 @@ while ($ano <= $end_ano) {
 //Gráfico 04 (linhas)
 	$start_month = 1;
 	$end_month = 12;
-	$start_year = 2017;
-	$end_year = 2017;
+	$start_year = 2018;
+	$end_year = 2018;
 	$year = $start_year;
 	$month = $start_month;
 while ($year <= $end_year) {
@@ -241,18 +241,18 @@ $month = 1;
   function grafico01() {
     var data = google.visualization.arrayToDataTable([
       ['', 'Bruto Recebido', 'Líquido Gerado', 'Despesas Pagas', 'Resultado'],
-      ['Jan', <?php echo $bruto12017;?>, <?php echo $liquido12017;?>, <?php echo $despesas12017;?>, <?php echo $resultado12017;?>],
-      ['Fev', <?php echo $bruto22017;?>, <?php echo $liquido22017;?>, <?php echo $despesas22017;?>, <?php echo $resultado22017;?>],
-      ['Mar', <?php echo $bruto32017;?>, <?php echo $liquido32017;?>, <?php echo $despesas32017;?>, <?php echo $resultado32017;?>],
-      ['Abr', <?php echo $bruto42017;?>, <?php echo $liquido42017;?>, <?php echo $despesas42017;?>, <?php echo $resultado42017;?>],
-      ['Mai', <?php echo $bruto52017;?>, <?php echo $liquido52017;?>, <?php echo $despesas52017;?>, <?php echo $resultado52017;?>],
-      ['Jun', <?php echo $bruto62017;?>, <?php echo $liquido62017;?>, <?php echo $despesas62017;?>, <?php echo $resultado62017;?>],
-      ['Jul', <?php echo $bruto72017;?>, <?php echo $liquido72017;?>, <?php echo $despesas72017;?>, <?php echo $resultado72017;?>],
-      ['Ago', <?php echo $bruto82017;?>, <?php echo $liquido82017;?>, <?php echo $despesas82017;?>, <?php echo $resultado82017;?>],
-      ['Set', <?php echo $bruto92017;?>, <?php echo $liquido92017;?>, <?php echo $despesas92017;?>, <?php echo $resultado92017;?>],
-      ['Out', <?php echo $bruto102017;?>, <?php echo $liquido102017;?>, <?php echo $despesas102017;?>, <?php echo $resultado102017;?>],
-      ['Nov', <?php echo $bruto112017;?>, <?php echo $liquido112017;?>, <?php echo $despesas112017;?>, <?php echo $resultado112017;?>],
-      ['Dez', <?php echo $bruto122017;?>, <?php echo $liquido122017;?>, <?php echo $despesas122017;?>, <?php echo $resultado122017;?>]
+      ['Jan', <?php echo $bruto12018;?>, <?php echo $liquido12018;?>, <?php echo $despesas12018;?>, <?php echo $resultado12018;?>],
+      ['Fev', <?php echo $bruto22018;?>, <?php echo $liquido22018;?>, <?php echo $despesas22018;?>, <?php echo $resultado22018;?>],
+      ['Mar', <?php echo $bruto32018;?>, <?php echo $liquido32018;?>, <?php echo $despesas32018;?>, <?php echo $resultado32018;?>],
+      ['Abr', <?php echo $bruto42018;?>, <?php echo $liquido42018;?>, <?php echo $despesas42018;?>, <?php echo $resultado42018;?>],
+      ['Mai', <?php echo $bruto52018;?>, <?php echo $liquido52018;?>, <?php echo $despesas52018;?>, <?php echo $resultado52018;?>],
+      ['Jun', <?php echo $bruto62018;?>, <?php echo $liquido62018;?>, <?php echo $despesas62018;?>, <?php echo $resultado62018;?>],
+      ['Jul', <?php echo $bruto72018;?>, <?php echo $liquido72018;?>, <?php echo $despesas72018;?>, <?php echo $resultado72018;?>],
+      ['Ago', <?php echo $bruto82018;?>, <?php echo $liquido82018;?>, <?php echo $despesas82018;?>, <?php echo $resultado82018;?>],
+      ['Set', <?php echo $bruto92018;?>, <?php echo $liquido92018;?>, <?php echo $despesas92018;?>, <?php echo $resultado92018;?>],
+      ['Out', <?php echo $bruto102018;?>, <?php echo $liquido102018;?>, <?php echo $despesas102018;?>, <?php echo $resultado102018;?>],
+      ['Nov', <?php echo $bruto112018;?>, <?php echo $liquido112018;?>, <?php echo $despesas112018;?>, <?php echo $resultado112018;?>],
+      ['Dez', <?php echo $bruto122018;?>, <?php echo $liquido122018;?>, <?php echo $despesas122018;?>, <?php echo $resultado122018;?>]
     ]);
 
     var options = {
@@ -269,18 +269,18 @@ $month = 1;
   function grafico02() {
       var data = google.visualization.arrayToDataTable([
         ['', '1º Cachê em R$', 'Gratuito em R$', 'Premium em R$', 'Vendas em R$', 'Abatimento de Cachês em R$', {role: 'style'}],
-		['Jan',  <?php echo $primeiros12017;?>, <?php echo $gratuitos12017;?>, <?php echo $pago12017;?>, <?php echo $vendas12017;?>, <?php echo $abatimento12017;?>, ''],
-		['Fev',  <?php echo $primeiros22017;?>, <?php echo $gratuitos22017;?>, <?php echo $pago22017;?>, <?php echo $vendas22017;?>, <?php echo $abatimento22017;?>, ''],
-		['Mar',  <?php echo $primeiros32017;?>, <?php echo $gratuitos32017;?>, <?php echo $pago32017;?>, <?php echo $vendas32017;?>, <?php echo $abatimento32017;?>, ''],
-		['Abr',  <?php echo $primeiros42017;?>, <?php echo $gratuitos42017;?>, <?php echo $pago42017;?>, <?php echo $vendas42017;?>, <?php echo $abatimento42017;?>, ''],
-		['Mai',  <?php echo $primeiros52017;?>, <?php echo $gratuitos52017;?>, <?php echo $pago52017;?>, <?php echo $vendas52017;?>, <?php echo $abatimento52017;?>, ''],
-		['Jun',  <?php echo $primeiros62017;?>, <?php echo $gratuitos62017;?>, <?php echo $pago62017;?>, <?php echo $vendas62017;?>, <?php echo $abatimento62017;?>, ''],
-		['Jul',  <?php echo $primeiros72017;?>, <?php echo $gratuitos72017;?>, <?php echo $pago72017;?>, <?php echo $vendas72017;?>, <?php echo $abatimento72017;?>, ''],
-		['Ago',  <?php echo $primeiros82017;?>, <?php echo $gratuitos82017;?>, <?php echo $pago82017;?>, <?php echo $vendas82017;?>, <?php echo $abatimento82017;?>, ''],
-		['Set',  <?php echo $primeiros92017;?>, <?php echo $gratuitos92017;?>, <?php echo $pago92017;?>, <?php echo $vendas92017;?>, <?php echo $abatimento92017;?>, ''],
-		['Out',  <?php echo $primeiros102017;?>, <?php echo $gratuitos102017;?>, <?php echo $pago102017;?>, <?php echo $vendas102017;?>, <?php echo $abatimento102017;?>, ''],
-		['Nov',  <?php echo $primeiros112017;?>, <?php echo $gratuitos112017;?>, <?php echo $pago112017;?>, <?php echo $vendas112017;?>, <?php echo $abatimento112017;?>, ''],
-		['Dez',  <?php echo $primeiros122017;?>, <?php echo $gratuitos122017;?>, <?php echo $pago122017;?>, <?php echo $vendas122017;?>, <?php echo $abatimento122017;?>, '']
+		['Jan',  <?php echo $primeiros12018;?>, <?php echo $gratuitos12018;?>, <?php echo $pago12018;?>, <?php echo $vendas12018;?>, <?php echo $abatimento12018;?>, ''],
+		['Fev',  <?php echo $primeiros22018;?>, <?php echo $gratuitos22018;?>, <?php echo $pago22018;?>, <?php echo $vendas22018;?>, <?php echo $abatimento22018;?>, ''],
+		['Mar',  <?php echo $primeiros32018;?>, <?php echo $gratuitos32018;?>, <?php echo $pago32018;?>, <?php echo $vendas32018;?>, <?php echo $abatimento32018;?>, ''],
+		['Abr',  <?php echo $primeiros42018;?>, <?php echo $gratuitos42018;?>, <?php echo $pago42018;?>, <?php echo $vendas42018;?>, <?php echo $abatimento42018;?>, ''],
+		['Mai',  <?php echo $primeiros52018;?>, <?php echo $gratuitos52018;?>, <?php echo $pago52018;?>, <?php echo $vendas52018;?>, <?php echo $abatimento52018;?>, ''],
+		['Jun',  <?php echo $primeiros62018;?>, <?php echo $gratuitos62018;?>, <?php echo $pago62018;?>, <?php echo $vendas62018;?>, <?php echo $abatimento62018;?>, ''],
+		['Jul',  <?php echo $primeiros72018;?>, <?php echo $gratuitos72018;?>, <?php echo $pago72018;?>, <?php echo $vendas72018;?>, <?php echo $abatimento72018;?>, ''],
+		['Ago',  <?php echo $primeiros82018;?>, <?php echo $gratuitos82018;?>, <?php echo $pago82018;?>, <?php echo $vendas82018;?>, <?php echo $abatimento82018;?>, ''],
+		['Set',  <?php echo $primeiros92018;?>, <?php echo $gratuitos92018;?>, <?php echo $pago92018;?>, <?php echo $vendas92018;?>, <?php echo $abatimento92018;?>, ''],
+		['Out',  <?php echo $primeiros102018;?>, <?php echo $gratuitos102018;?>, <?php echo $pago102018;?>, <?php echo $vendas102018;?>, <?php echo $abatimento102018;?>, ''],
+		['Nov',  <?php echo $primeiros112018;?>, <?php echo $gratuitos112018;?>, <?php echo $pago112018;?>, <?php echo $vendas112018;?>, <?php echo $abatimento112018;?>, ''],
+		['Dez',  <?php echo $primeiros122018;?>, <?php echo $gratuitos122018;?>, <?php echo $pago122018;?>, <?php echo $vendas122018;?>, <?php echo $abatimento122018;?>, '']
       ]);
 
       var options = {
@@ -345,18 +345,18 @@ $month = 1;
 	        // data.addRows([
 		var data = google.visualization.arrayToDataTable([
 		['', 'Cachês a pagar', 'Despesas a pagar', 'Bruto a receber', 'Cachês Pagos', 'Despesas pagas', 'Bruto Recebido'],
-		['Jan', <?php echo $caches_a_pagar12017;?>, <?php echo $despesas_a_pagar12017;?>, <?php echo $bruto_a_receber12017;?>, <?php echo $cache_pagos12017;?>, <?php echo $despesas_pagas12017;?>, <?php echo $bruto_recebido12017;?>],
-		['Fev', <?php echo $caches_a_pagar22017;?>, <?php echo $despesas_a_pagar22017;?>, <?php echo $bruto_a_receber22017;?>, <?php echo $cache_pagos22017;?>, <?php echo $despesas_pagas22017;?>, <?php echo $bruto_recebido22017;?>],
-		['Mar', <?php echo $caches_a_pagar32017;?>, <?php echo $despesas_a_pagar32017;?>, <?php echo $bruto_a_receber32017;?>, <?php echo $cache_pagos32017;?>, <?php echo $despesas_pagas32017;?>, <?php echo $bruto_recebido32017;?>],
-		['Abr', <?php echo $caches_a_pagar42017;?>, <?php echo $despesas_a_pagar42017;?>, <?php echo $bruto_a_receber42017;?>, <?php echo $cache_pagos42017;?>, <?php echo $despesas_pagas42017;?>, <?php echo $bruto_recebido42017;?>],
-		['Mai', <?php echo $caches_a_pagar52017;?>, <?php echo $despesas_a_pagar52017;?>, <?php echo $bruto_a_receber52017;?>, <?php echo $cache_pagos52017;?>, <?php echo $despesas_pagas52017;?>, <?php echo $bruto_recebido52017;?>],
-		['Jun', <?php echo $caches_a_pagar62017;?>, <?php echo $despesas_a_pagar62017;?>, <?php echo $bruto_a_receber62017;?>, <?php echo $cache_pagos62017;?>, <?php echo $despesas_pagas62017;?>, <?php echo $bruto_recebido62017;?>],
-		['Jul', <?php echo $caches_a_pagar72017;?>, <?php echo $despesas_a_pagar72017;?>, <?php echo $bruto_a_receber72017;?>, <?php echo $cache_pagos72017;?>, <?php echo $despesas_pagas72017;?>, <?php echo $bruto_recebido72017;?>],
-		['Ago', <?php echo $caches_a_pagar82017;?>, <?php echo $despesas_a_pagar82017;?>, <?php echo $bruto_a_receber82017;?>, <?php echo $cache_pagos82017;?>, <?php echo $despesas_pagas82017;?>, <?php echo $bruto_recebido82017;?>],
-		['Set', <?php echo $caches_a_pagar92017;?>, <?php echo $despesas_a_pagar92017;?>, <?php echo $bruto_a_receber92017;?>, <?php echo $cache_pagos92017;?>, <?php echo $despesas_pagas92017;?>, <?php echo $bruto_recebido92017;?>],
-		['Out', <?php echo $caches_a_pagar102017;?>, <?php echo $despesas_a_pagar102017;?>, <?php echo $bruto_a_receber102017;?>, <?php echo $cache_pagos102017;?>, <?php echo $despesas_pagas102017;?>, <?php echo $bruto_recebido102017;?>],
-		['Nov', <?php echo $caches_a_pagar112017;?>, <?php echo $despesas_a_pagar112017;?>, <?php echo $bruto_a_receber112017;?>, <?php echo $cache_pagos112017;?>, <?php echo $despesas_pagas112017;?>, <?php echo $bruto_recebido112017;?>],
-		['Dez', <?php echo $caches_a_pagar122017;?>, <?php echo $despesas_a_pagar122017;?>, <?php echo $bruto_a_receber122017;?>, <?php echo $cache_pagos122017;?>, <?php echo $despesas_pagas122017;?>, <?php echo $bruto_recebido122017;?>]
+		['Jan', <?php echo $caches_a_pagar12018;?>, <?php echo $despesas_a_pagar12018;?>, <?php echo $bruto_a_receber12018;?>, <?php echo $cache_pagos12018;?>, <?php echo $despesas_pagas12018;?>, <?php echo $bruto_recebido12018;?>],
+		['Fev', <?php echo $caches_a_pagar22018;?>, <?php echo $despesas_a_pagar22018;?>, <?php echo $bruto_a_receber22018;?>, <?php echo $cache_pagos22018;?>, <?php echo $despesas_pagas22018;?>, <?php echo $bruto_recebido22018;?>],
+		['Mar', <?php echo $caches_a_pagar32018;?>, <?php echo $despesas_a_pagar32018;?>, <?php echo $bruto_a_receber32018;?>, <?php echo $cache_pagos32018;?>, <?php echo $despesas_pagas32018;?>, <?php echo $bruto_recebido32018;?>],
+		['Abr', <?php echo $caches_a_pagar42018;?>, <?php echo $despesas_a_pagar42018;?>, <?php echo $bruto_a_receber42018;?>, <?php echo $cache_pagos42018;?>, <?php echo $despesas_pagas42018;?>, <?php echo $bruto_recebido42018;?>],
+		['Mai', <?php echo $caches_a_pagar52018;?>, <?php echo $despesas_a_pagar52018;?>, <?php echo $bruto_a_receber52018;?>, <?php echo $cache_pagos52018;?>, <?php echo $despesas_pagas52018;?>, <?php echo $bruto_recebido52018;?>],
+		['Jun', <?php echo $caches_a_pagar62018;?>, <?php echo $despesas_a_pagar62018;?>, <?php echo $bruto_a_receber62018;?>, <?php echo $cache_pagos62018;?>, <?php echo $despesas_pagas62018;?>, <?php echo $bruto_recebido62018;?>],
+		['Jul', <?php echo $caches_a_pagar72018;?>, <?php echo $despesas_a_pagar72018;?>, <?php echo $bruto_a_receber72018;?>, <?php echo $cache_pagos72018;?>, <?php echo $despesas_pagas72018;?>, <?php echo $bruto_recebido72018;?>],
+		['Ago', <?php echo $caches_a_pagar82018;?>, <?php echo $despesas_a_pagar82018;?>, <?php echo $bruto_a_receber82018;?>, <?php echo $cache_pagos82018;?>, <?php echo $despesas_pagas82018;?>, <?php echo $bruto_recebido82018;?>],
+		['Set', <?php echo $caches_a_pagar92018;?>, <?php echo $despesas_a_pagar92018;?>, <?php echo $bruto_a_receber92018;?>, <?php echo $cache_pagos92018;?>, <?php echo $despesas_pagas92018;?>, <?php echo $bruto_recebido92018;?>],
+		['Out', <?php echo $caches_a_pagar102018;?>, <?php echo $despesas_a_pagar102018;?>, <?php echo $bruto_a_receber102018;?>, <?php echo $cache_pagos102018;?>, <?php echo $despesas_pagas102018;?>, <?php echo $bruto_recebido102018;?>],
+		['Nov', <?php echo $caches_a_pagar112018;?>, <?php echo $despesas_a_pagar112018;?>, <?php echo $bruto_a_receber112018;?>, <?php echo $cache_pagos112018;?>, <?php echo $despesas_pagas112018;?>, <?php echo $bruto_recebido112018;?>],
+		['Dez', <?php echo $caches_a_pagar122018;?>, <?php echo $despesas_a_pagar122018;?>, <?php echo $bruto_a_receber122018;?>, <?php echo $cache_pagos122018;?>, <?php echo $despesas_pagas122018;?>, <?php echo $bruto_recebido122018;?>]
 		]);
 
       var options = {
