@@ -23,8 +23,8 @@ include("conecta.php");
 	if ($emitiu_nota == 0 && $status_recebimento == 0) {
 			$part = 1;
 			while ($part <= $n_participantes) {
-				$nome = $_POST['nome'.$part];
-				$sobrenome = $_POST['sobrenome'.$part];
+				$nome = $_POST['typeahead'.$part];
+				// $sobrenome = $_POST['sobrenome'.$part];
 				$cache_bruto = $_POST['cache_bruto'.$part];
 				$subtotal = $subtotal + $cache_bruto;
 				$cache_liquido = $_POST['cache_liquido'.$part];
