@@ -32,6 +32,30 @@ echo "
 		input[type='number'] {
 		   width:50px;
 		}
+		.container {
+		width: 800px;
+		margin: 50px auto;
+		}
+
+		.typeahead-wrapper {
+		display: block;
+		margin: 50px 0;
+		}
+
+		.tt-dropdown-menu {
+		background-color: #fff;
+		border: 1px solid #000;
+		}
+
+		.tt-suggestion.tt-cursor {
+		background-color: #ccc;
+		}
+
+		.triggered-events {
+		float: right;
+		width: 500px;
+		height: 300px;
+		}
 		</style>
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
